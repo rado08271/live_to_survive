@@ -1,5 +1,6 @@
 package eu.rafig.covid.core.game.entities.alive.organs;
 
+import eu.rafig.covid.core.game.common.Constants;
 import eu.rafig.covid.core.game.common.ListFiller;
 import eu.rafig.covid.core.game.entities.effects.Effect;
 import eu.rafig.covid.core.game.entities.effects.GameEffects;
@@ -32,7 +33,7 @@ public class Lungs {
     }
 
     private void hardLaborForImmunity() {
-        vitals.getMoney().earnMoney(imunities.size()/2);
+        vitals.getMoney().earnMoney((int) (imunities.size() * Constants.REWARD_FOR_BUYING_IMMUNITY));
     }
 
     private void reproduction() {
@@ -61,7 +62,7 @@ public class Lungs {
         getImunities().addAll(imms);
 
         // earn some small amount of money by reproduction
-        vitals.getMoney().earnMoney((virs.size() + imms.size())/4);
+        vitals.getMoney().earnMoney((int) ((virs.size() + imms.size())*Constants.REWARD_FOR_ANY_CELL_REPRODUCTION));
     }
 
     public boolean fight() {
@@ -90,7 +91,7 @@ public class Lungs {
             getImunities().remove(i);
         }
 
-        getVitals().getMoney().earnMoney(immunitiesSize - getImunities().size());
+        getVitals().getMoney().earnMoney((int) (immunitiesSize - getImunities().size() * Constants.REWARD_FOR_FIGHT));
 
         dayTime++;
         return true;
