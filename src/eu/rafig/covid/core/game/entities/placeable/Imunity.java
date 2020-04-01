@@ -9,7 +9,7 @@ import java.util.List;
 public class Imunity extends Organism implements Spreadable<Imunity> {
 
     public Imunity() {
-        super(1.1, Harmness.POSITIVE);
+        super(Constants.HARMNESS_FOR_IMUNITY, Harmness.POSITIVE);
     }
 
     @Override

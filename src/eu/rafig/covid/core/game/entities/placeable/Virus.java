@@ -9,7 +9,7 @@ import java.util.List;
 public class Virus extends Organism implements Spreadable<Virus> {
 
     public Virus() {
-        super(1.14, Harmness.NEGATIVE);
+        super(Constants.HARMNESS_FOR_VIRUS, Harmness.NEGATIVE);
     }
 
     @Override

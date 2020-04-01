@@ -2,13 +2,12 @@ package eu.rafig.covid.core.game.entities.effects;
 
 import eu.rafig.covid.core.game.common.Constants;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class GameEffects {
     private static List<Effect> effectList = Arrays.asList(
-        (new Effect("Washing hands", Constants.PRICE_FOR_WASHING_HAMDS)),
+        (new Effect("Washing hands", Constants.PRICE_FOR_WASHING_HANDS)),
         (new Effect("Wearing protection", Constants.PRICE_FOR_WEARING_PROTECTION)),
         (new Effect("Social Distancing", Constants.PRICE_FOR_SOCIAL_DISTANCING)),
         (new Effect("Healthy regime", Constants.PRICE_FOR_HEALTHY_REGIMEN)),

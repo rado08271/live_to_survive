@@ -8,7 +8,7 @@ public class Vitals {
 
     public Vitals() {
         health = new Health();
-        money = new Money(Constants.STARTIN_MONEY);
+        money = new Money(Constants.STARTING_MONEY);
     }
 
     public Health getHealth() {
