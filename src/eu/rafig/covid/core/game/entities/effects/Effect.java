@@ -4,9 +4,9 @@ package eu.rafig.covid.core.game.entities.effects;
 public class Effect {
     private String desciption;
     private boolean isActive;
-    private int dnaPrice;
+    private double dnaPrice;
 
-    public Effect(String desciption, int dnaPrice) {
+    public Effect(String desciption, double dnaPrice) {
         this.desciption = desciption;
         this.isActive = false;
         this.dnaPrice = dnaPrice;
@@ -16,7 +16,7 @@ public class Effect {
         return desciption;
     }
 
-    public int getDnaPrice() {
+    public double getDnaPrice() {
         return dnaPrice;
     }
 

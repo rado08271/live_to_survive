@@ -13,6 +13,10 @@ public class Money {
         return true;
     }
 
+    public boolean butStuff(double price){
+        return butStuff((int) price);
+    }
+
     public double getCurrentMoney() {
         return currentMoney;
     }

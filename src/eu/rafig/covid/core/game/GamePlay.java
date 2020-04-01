@@ -17,7 +17,7 @@ public class GamePlay {
     public GamePlay(String userName) {
         user = new User(userName);
         gameState = GameState.PLAYING;
-        lungs = new Lungs(150, "Lungs");
+        lungs = new Lungs(Constants.LUNGS_CELL_CAPACITY, "Lungs");
         event = new Event(lungs);
     }
 
