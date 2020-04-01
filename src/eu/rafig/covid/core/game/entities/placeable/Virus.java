@@ -7,8 +7,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Virus extends Organism implements Spreadable<Virus> {
+
     public Virus() {
-        super(PlaceableType.VIRUS);
+        super(1.14, Harmness.NEGATIVE);
     }
 
     @Override
@@ -25,5 +26,10 @@ public class Virus extends Organism implements Spreadable<Virus> {
         }
 
         return kids;
+    }
+
+    @Override
+    public double getHarmnessLevel() {
+        return super.getHarmness().getHarmness() * getConstant();
     }
 }

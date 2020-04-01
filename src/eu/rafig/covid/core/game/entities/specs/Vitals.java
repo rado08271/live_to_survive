@@ -1,17 +1,19 @@
 package eu.rafig.covid.core.game.entities.specs;
 
 public class Vitals {
-    private Health health = new Health();
-    private Infection infection = new Infection();
+    private Health health ;
+    private Money money;
 
     public Vitals() {
+        health = new Health();
+        money = new Money(0);
     }
 
     public Health getHealth() {
         return health;
     }
 
-    public Infection getInfection() {
-        return infection;
+    public Money getMoney() {
+        return money;
     }
 }
