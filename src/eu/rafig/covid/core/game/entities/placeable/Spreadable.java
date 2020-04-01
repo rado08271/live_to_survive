@@ -4,4 +4,5 @@ import java.util.List;
 
 public interface Spreadable<T> {
     List<T> getRandomKids(int max);
+    double getHarmnessLevel();
 }

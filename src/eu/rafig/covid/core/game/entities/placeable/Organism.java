@@ -1,19 +1,33 @@
 package eu.rafig.covid.core.game.entities.placeable;
 
-public abstract class Organism implements Placeable {
-    private PlaceableType type;
+public abstract class Organism {
+    private double constant = 0;
+    private String name = "";
+    private Harmness harmness = Harmness.NEUTRAL;
 
-    public Organism(PlaceableType type) {
-        this.type = type;
+    public Organism(double constant, Harmness harmness) {
+        this.constant = constant;
+        this.harmness = harmness;
     }
 
-    @Override
-    public PlaceableType getType() {
-        return type;
+    public Organism(double constant, String name) {
+        this.constant = constant;
+        this.name = name;
     }
 
-    @Override
-    public Effect getEffect() {
-        return type.getEffect();
+    public Organism(double constant) {
+        this.constant = constant;
+    }
+
+    public double getConstant() {
+        return constant;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Harmness getHarmness() {
+        return harmness;
     }
 }

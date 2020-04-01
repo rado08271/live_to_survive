@@ -9,7 +9,7 @@ public class Health {
 
     public void applyChanges(double value){
         if (value == 0) return;
-        currentHealth -= value/10;
+        currentHealth += value/10;
     }
 
     public double getCurrentHealth() {

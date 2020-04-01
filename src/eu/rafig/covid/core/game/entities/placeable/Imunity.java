@@ -7,8 +7,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Imunity extends Organism implements Spreadable<Imunity> {
+
     public Imunity() {
-        super(PlaceableType.IMUNITY);
+        super(1.1, Harmness.POSITIVE);
     }
 
     @Override
@@ -23,5 +24,10 @@ public class Imunity extends Organism implements Spreadable<Imunity> {
         }
 
         return kids;
+    }
+
+    @Override
+    public double getHarmnessLevel() {
+        return super.getHarmness().getHarmness() * getConstant();
     }
 }

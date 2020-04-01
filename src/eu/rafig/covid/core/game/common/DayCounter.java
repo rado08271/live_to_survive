@@ -6,4 +6,8 @@ public class DayCounter {
     public static int increaseDay() {
         return dayCount++;
     }
+
+    public static int getDayCount() {
+        return dayCount;
+    }
 }
