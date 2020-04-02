@@ -22,7 +22,7 @@ public class Constants {
     public static final double PRICE_FOR_LEARNING = 20;
 
     // HARMNESS VALUES
-    public static final double HARMNESS_FOR_CELL = 0;
+    public static final double HARMNES_FOR_CELL = 0;
     public static final double HARMNESS_FOR_IMUNITY = 1.1;
     public static final double HARMNESS_FOR_VIRUS = 1.14;
 
