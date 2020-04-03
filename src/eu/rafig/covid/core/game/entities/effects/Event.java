@@ -1,5 +1,6 @@
 package eu.rafig.covid.core.game.entities.effects;
 
+import eu.rafig.covid.core.game.common.Constants;
 import eu.rafig.covid.core.game.common.ListFiller;
 import eu.rafig.covid.core.game.common.Randomizer;
 import eu.rafig.covid.core.game.entities.alive.organs.Lungs;
@@ -16,7 +17,7 @@ public class Event {
 
     //adds random number of viruses...
     public void addVirus() {
-        int numberOfViruses = Randomizer.getRandomNumberMax(PositiveEffects.getBonus());
+        int numberOfViruses = Randomizer.getRandomNumberMax(PositiveEffects.getEffectList().size() - PositiveEffects.getBonus());
 
         for (int i = 0; i < numberOfViruses; i++) {
             lungs.addVirus();
