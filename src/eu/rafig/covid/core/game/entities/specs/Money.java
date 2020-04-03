@@ -3,6 +3,8 @@ package eu.rafig.covid.core.game.entities.specs;
 public class Money {
     private double currentMoney = 0;
 
+    public Money() {}
+
     public Money(double currentMoney) {
         this.currentMoney = currentMoney;
     }

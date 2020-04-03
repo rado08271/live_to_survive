@@ -39,6 +39,7 @@ public class Console {
         System.out.println("+============================ USER: " + gamePlay.getUser().getName() + " = " + gamePlay.getUser().getScore() + " ============================+");
         System.out.println("| DAY:    : \t\t\t" + gamePlay.getCurrentDay() + " - " + gamePlay.getLungs().getDayTime());
         System.out.println("| HEALTH: : \t\t\t" + gamePlay.getLungs().getVitals().getHealth().getCurrentHealth());
+        System.out.println("| ENERGY: : \t\t\t" + gamePlay.getLungs().getVitals().getEnergy().getEnergy());
         System.out.println("| DNA     : \t\t\t" + gamePlay.getLungs().getVitals().getMoney().getCurrentMoney());
 
         System.out.println("+-----------------------------------------------------------------------------------+");
