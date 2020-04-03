@@ -2,9 +2,8 @@ package eu.rafig.covid.core.ui;
 
 import eu.rafig.covid.core.game.GamePlay;
 import eu.rafig.covid.core.game.GameState;
-import eu.rafig.covid.core.game.entities.alive.organs.Lungs;
 import eu.rafig.covid.core.game.entities.effects.Effect;
-import eu.rafig.covid.core.game.entities.effects.GameEffects;
+import eu.rafig.covid.core.game.entities.effects.PositiveEffects;
 import eu.rafig.covid.core.utilities.Reader;
 
 public class Console {
@@ -81,7 +80,7 @@ public class Console {
         System.out.println("| WELCOME TO EFFECTS SHOP");
 
         int it = 0;
-        for (Effect effect: GameEffects.getEffectList()) {
+        for (Effect effect: PositiveEffects.getEffectList()) {
             System.out.println("| " + it++ + " =\t=" + effect.getDesciption() + " =\t= " + effect.isActive() + " =\t= " + effect.getDnaPrice() + "DNA");
         }
     }

@@ -6,7 +6,7 @@ import eu.rafig.covid.core.game.common.DayCounter;
 import eu.rafig.covid.core.game.entities.alive.organs.Lungs;
 import eu.rafig.covid.core.game.entities.alive.organs.LungsState;
 import eu.rafig.covid.core.game.entities.effects.Event;
-import eu.rafig.covid.core.game.entities.effects.GameEffects;
+import eu.rafig.covid.core.game.entities.effects.PositiveEffects;
 
 public class GamePlay {
     private User user;
@@ -46,8 +46,8 @@ public class GamePlay {
     }
 
     public boolean buy(int choice) {
-        if (choice >= GameEffects.getEffectList().size()) return false;
-        return lungs.buyEffect(GameEffects.getEffectList().get(choice));
+        if (choice >= PositiveEffects.getEffectList().size()) return false;
+        return lungs.buyEffect(PositiveEffects.getEffectList().get(choice));
     }
 
     public boolean buySomeImmunity(int count) {
