@@ -3,6 +3,7 @@ package eu.rafig.covid.core.game.entities.alive.organs;
 import eu.rafig.covid.core.game.common.Constants;
 import eu.rafig.covid.core.game.common.ListFiller;
 import eu.rafig.covid.core.game.entities.effects.Effect;
+import eu.rafig.covid.core.game.entities.effects.PositiveEffects;
 import eu.rafig.covid.core.game.entities.placeable.*;
 import eu.rafig.covid.core.game.entities.specs.Vitals;
 
@@ -107,7 +108,7 @@ public class Lungs {
             value += tmp;
         }
 
-        if (getViruses().size() == 0 && lungsState == LungsState.INFECTED) {
+        if (getViruses().size() == 0 && getBoughtEffects().size() == PositiveEffects.getEffectList().size() && lungsState == LungsState.INFECTED) {
             lungsState = LungsState.CURED;
         }
         vitals.getHealth().applyChanges(value);
