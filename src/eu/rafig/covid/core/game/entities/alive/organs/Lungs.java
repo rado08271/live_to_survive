@@ -68,8 +68,8 @@ public class Lungs {
     public boolean fight() {
         if (dayTime == 3) return false;
 
-        int viruses = getViruses().size();
-        int imunities = getImunities().size();
+        double viruses = getViruses().size();
+        double imunities = getImunities().size();
 
         if ( viruses > imunities) {
             viruses = viruses - imunities;
@@ -82,17 +82,20 @@ public class Lungs {
         }
 
         int virusesSize = getViruses().size();
-        for (int i =  virusesSize - viruses -1; i >= 0; i--) {
+        for (int i = (int) (virusesSize - viruses -1); i >= 0; i--) {
             getViruses().remove(i);
         }
 
+        if ( !vitals.getEnergy().decreaseEnergy(getImunities().size() * Constants.ENERGY_FOR_ONE_CELL_FIGHT)) {
+            imunities = 0;
+        }
+
         int immunitiesSize = getImunities().size();
-        for (int i = immunitiesSize - imunities -1; i >= 0; i--) {
+        for (int i = (int) (immunitiesSize - imunities -1); i >= 0; i--) {
             getImunities().remove(i);
         }
 
         getVitals().getMoney().earnMoney((int) (immunitiesSize - getImunities().size() * Constants.REWARD_FOR_FIGHT));
-
         dayTime++;
         return true;
     }
@@ -100,7 +103,11 @@ public class Lungs {
     private double healthCheck() {
         double value = 0;
         for (Spreadable v: getSpreadable()) {
-            value += v.getHarmnessLevel();
+            double tmp = v.getHarmnessLevel();
+            if (v instanceof Virus) {
+                tmp = Constants.MAX_LOST_HEALTH_PER_LOST_ENERGY - ((Constants.MAX_LOST_HEALTH_PER_LOST_ENERGY - v.getHarmnessLevel()) * vitals.getEnergy().getEnergy()/100);
+            }
+            value += tmp;
         }
 
         if (getViruses().size() == 0 && lungsState == LungsState.INFECTED) {
@@ -144,6 +151,7 @@ public class Lungs {
 
     public void endDay() {
         dayTime = 0;
+        vitals.getEnergy().increaseEnergy(Constants.ENERGY_FOR_ONE_SLEEP);
         hardLaborForImmunity();
         healthCheck();
         reproduction();
