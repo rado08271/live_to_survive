@@ -5,6 +5,7 @@ import eu.rafig.covid.core.game.common.Constants;
 
 public class Vitals {
     private Health health ;
+    private Infection infection;
     private Energy energy;
     private Money money;
 
@@ -25,4 +26,10 @@ public class Vitals {
     public Energy getEnergy() {
         return energy;
     }
+
+    public Infection getInfection() {
+        return infection;
+    }
+
+
 }

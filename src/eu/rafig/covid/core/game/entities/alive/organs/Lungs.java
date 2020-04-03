@@ -61,6 +61,7 @@ public class Lungs {
 
         // earn some small amount of money by reproduction
         vitals.getMoney().earnMoney((int) ((virs.size() + imms.size())*Constants.REWARD_FOR_ANY_CELL_REPRODUCTION));
+        vitals.getInfection().getCurrentRNA().earnMoney((int) ((virs.size() + imms.size())*Constants.REWARD_FOR_ANY_CELL_REPRODUCTION));
     }
 
     public boolean fight() {

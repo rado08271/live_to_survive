@@ -4,6 +4,8 @@ import eu.rafig.covid.core.game.common.ListFiller;
 import eu.rafig.covid.core.game.common.Randomizer;
 import eu.rafig.covid.core.game.entities.alive.organs.Lungs;
 import eu.rafig.covid.core.game.entities.placeable.Imunity;
+import eu.rafig.covid.core.game.entities.placeable.Virus;
+import eu.rafig.covid.core.game.entities.specs.Infection;
 
 import java.util.List;
 
@@ -21,6 +23,10 @@ public class Event {
         for (int i = 0; i < numberOfViruses; i++) {
             lungs.addVirus();
         }
+    }
+
+    public void virusMutation(Infection infection) {
+        infection.increaseMutationLevel();
     }
 
     public boolean buyImmunity(int count) {

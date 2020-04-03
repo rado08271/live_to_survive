@@ -30,6 +30,11 @@ public class GamePlay {
         nextDay();
 
         event.addVirus();
+        event.buyImmunity(0);
+
+        // FIXME: for now it does nothing
+        event.virusMutation(lungs.getVitals().getInfection());
+
         lungs.endDay();
 
         if (lungs.getLungsState() == LungsState.CURED) {
