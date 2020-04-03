@@ -5,7 +5,7 @@ import eu.rafig.covid.core.game.common.Constants;
 import java.util.Arrays;
 import java.util.List;
 
-public class GameEffects {
+public class PositiveEffects {
     private static List<Effect> effectList = Arrays.asList(
         (new Effect("Washing hands", Constants.PRICE_FOR_WASHING_HANDS)),
         (new Effect("Wearing protection", Constants.PRICE_FOR_WEARING_PROTECTION)),

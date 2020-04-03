@@ -1,6 +1,7 @@
 package eu.rafig.covid.core.game.entities.effects;
 
 import eu.rafig.covid.core.game.common.ListFiller;
+import eu.rafig.covid.core.game.common.Randomizer;
 import eu.rafig.covid.core.game.entities.alive.organs.Lungs;
 import eu.rafig.covid.core.game.entities.placeable.Imunity;
 
@@ -13,8 +14,13 @@ public class Event {
         this.lungs = lungs;
     }
 
+    //adds random number of viruses...
     public void addVirus() {
-        lungs.addVirus();
+        int numberOfViruses = Randomizer.getRandomNumberMax(PositiveEffects.getBonus());
+
+        for (int i = 0; i < numberOfViruses; i++) {
+            lungs.addVirus();
+        }
     }
 
     public boolean buyImmunity(int count) {
