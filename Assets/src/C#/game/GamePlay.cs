@@ -13,10 +13,10 @@ namespace eu.parada.game {
         public Lungs lungs { get; private set; }
         private Events events;
 
-        public GamePlay(string userName) {
-            this.user = new User(userName);
+        public GamePlay(string userName, double difficulty) {
+            this.user = new User(userName, difficulty);
             this.gameState = GameState.PLAYING;
-            this.lungs = new Lungs(Constants.LUNGS_CELL_CAPACITY, "Lungs");
+            this.lungs = new Lungs(Constants.LUNGS_CELL_CAPACITY, "Lungs", (int) (difficulty * 100));
             this.events = new Events(lungs);
         }
 
@@ -56,7 +56,7 @@ namespace eu.parada.game {
         }
 
         public virtual bool attack() {
-            user.score += lungs.fight();
+            user.addScore(lungs.fight());
             return (lungs.dayTime == DayTime.SLEEP) ? false : true;
         }
 
@@ -65,10 +65,8 @@ namespace eu.parada.game {
         }
 
         private int nextDay() {
-            user.score += 1;
+            user.addScore(1);
             return DayCounter.increaseDay();
         }
-
-
     }
 }

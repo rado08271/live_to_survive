@@ -19,11 +19,11 @@ namespace eu.parada.entities.organ {
         public IList<Cell> cells { get; private set; }
         public IList<Effect> boughtEffects { get; private set; }
 
-        public Lungs(int availableCells, string description) {
+        public Lungs(int availableCells, string description, int difficulty) {
             this.description = description;
-            this.vitals = new Vitals();
+            this.vitals = new Vitals(difficulty);
 
-            this.viruses = (new ListFilter<Virus>()).fillList(new Virus(), 0);
+            this.viruses = (new ListFilter<Virus>()).fillList(new Virus(), difficulty);
             this.imunities = (new ListFilter<Immunity>()).fillList(new Immunity(), 0);
             this.cells = (new ListFilter<Cell>()).fillList(new Cell(), 150);
             this.boughtEffects = new List<Effect>();
@@ -103,6 +103,12 @@ namespace eu.parada.entities.organ {
             hardLaborForImmunity();
             healthCheck();
             reproduction();
+            dayTime = DayTime.MORNING;
+            time = 0;
+        }
+
+        public int getKindaTime() {
+            return time;
         }
 
         private void hardLaborForImmunity() {
@@ -139,6 +145,7 @@ namespace eu.parada.entities.organ {
         }
 
         private bool increaseDay() {
+            if (dayTime == DayTime.SLEEP) return false;
             switch ((time++) % 4) {
                 case (int)DayTime.MORNING:
                     dayTime = DayTime.MORNING;
