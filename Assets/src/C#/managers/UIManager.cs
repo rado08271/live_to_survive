@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using eu.parada.entities.events;
 using eu.parada.enums;
 
-namespace eu.parada {
+namespace eu.parada.manager {
     public class UIManager : MonoBehaviour {
         public Game game;
 

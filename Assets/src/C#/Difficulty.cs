@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using eu.parada.manager;
 
 namespace eu.parada {
     public class Difficulty : MonoBehaviour {

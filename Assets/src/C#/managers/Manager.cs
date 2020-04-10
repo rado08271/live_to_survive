@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using eu.parada.game;
 
-namespace eu.parada {
+namespace eu.parada.manager {
     public class Manager {
 
         private static Manager manager = null;

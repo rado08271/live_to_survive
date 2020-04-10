@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using eu.parada.common;
-namespace eu.parada {
+
+namespace eu.parada.manager {
     public class UsabilityManager : MonoBehaviour {
         public Game game;
 
@@ -22,8 +23,8 @@ namespace eu.parada {
         }
 
         public void buyImmunity () {
-            game.buyImmunity(immunitiesToBuy);
-            immunitiesToBuy = 0;
+            if (game.buyImmunity(immunitiesToBuy))
+                immunitiesToBuy = 0;
         }
 
         public void buyFirstEffect() {

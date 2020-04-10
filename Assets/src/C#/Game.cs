@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using eu.parada.game;
+using eu.parada.manager;
 using eu.parada.enums;
 
 namespace eu.parada {
