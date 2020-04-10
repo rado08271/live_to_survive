@@ -104,7 +104,7 @@ public class Lungs {
             double tmp = v.getHarmnessLevel();
             if (v instanceof Virus) {
                 tmp = Constants.MAX_LOST_HEALTH_PER_LOST_ENERGY - ((Constants.MAX_LOST_HEALTH_PER_LOST_ENERGY - v.getHarmnessLevel()) * vitals.getEnergy().getEnergy()/100);
-            }
+            } if (v instanceof Imunity) {/*TODO: DELETE THIS*/}
             value += tmp;
         }
 
@@ -145,7 +145,7 @@ public class Lungs {
 
     public boolean addImmunities(List<Imunity> imunities) {
         if (getImunities().size() + imunities.size() > getCells().size()) return false;
-        if (!vitals.getMoney().butStuff(imunities.size())) return false;
+        if (!vitals.getMoney().butStuff(imunities.size() * Constants.IMMUNITY_PRICE)) return false;
 
         getImunities().addAll(imunities);
         return true;

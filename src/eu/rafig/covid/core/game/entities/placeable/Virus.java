@@ -18,7 +18,7 @@ public class Virus extends Organism implements Spreadable<Virus> {
 
         List<Virus> kids = new ArrayList<>();
         if (max > Constants.STARTING_SPREADING_VIRUS) max = Constants.STARTING_SPREADING_VIRUS;
-        if (max < 0) max = 0;
+        if (max <= 1) max = 1;
 
         int randomNumber = Randomizer.getRandomNumberMax(max);
         for (int i = 0; i < randomNumber; i++) {

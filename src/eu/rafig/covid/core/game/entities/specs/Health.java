@@ -17,6 +17,7 @@ public class Health {
         if (value == 0) return;
         currentHealth += value/Constants.HEALTH_DIVIDE_CONSTANT;
         if (currentHealth >= Constants.MAX_HEALTH) currentHealth = Constants.MAX_HEALTH;
+        if (currentHealth <= 0) currentHealth = 0;
     }
 
     public double getCurrentHealth() {

@@ -5,11 +5,22 @@ public class Effect {
     private String desciption;
     private boolean isActive;
     private double dnaPrice;
+    private double spreading;
+    private double energy;
+    private double reprduction;
 
     public Effect(String desciption, double dnaPrice) {
         this.desciption = desciption;
         this.isActive = false;
         this.dnaPrice = dnaPrice;
+    }
+
+    public Effect(String desciption, double dnaPrice, double spreading, double energy, double reprduction) {
+        this.desciption = desciption;
+        this.dnaPrice = dnaPrice;
+        this.spreading = spreading;
+        this.energy = energy;
+        this.reprduction = reprduction;
     }
 
     public String getDesciption() {
@@ -27,4 +38,17 @@ public class Effect {
     public void setActive(boolean active) {
         isActive = active;
     }
+
+    public double getSpreading() {
+        return spreading;
+    }
+
+    public double getEnergy() {
+        return energy;
+    }
+
+    public double getReprduction() {
+        return reprduction;
+    }
+
 }

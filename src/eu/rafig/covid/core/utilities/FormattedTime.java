@@ -11,6 +11,6 @@ public class FormattedTime {
     }
 
     public String finished() {
-        return new SimpleDateFormat("HH:mm:ss.mmm").format(new Date(clocks.finished()));
+        return new SimpleDateFormat("mm:ss.mmm").format(new Date(clocks.finished()));
     }
 }
