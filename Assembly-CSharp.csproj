@@ -73,6 +73,7 @@
      <Compile Include="Assets\src\C#\entities\specs\Health.cs" />
      <Compile Include="Assets\src\C#\entities\specs\Money.cs" />
      <Compile Include="Assets\src\C#\entities\specs\Vitals.cs" />
+     <Compile Include="Assets\src\C#\enums\BaseState.cs" />
      <Compile Include="Assets\src\C#\enums\Commands.cs" />
      <Compile Include="Assets\src\C#\enums\DayTime.cs" />
      <Compile Include="Assets\src\C#\enums\GameState.cs" />
@@ -80,6 +81,7 @@
      <Compile Include="Assets\src\C#\enums\LungsState.cs" />
      <Compile Include="Assets\src\C#\Game.cs" />
      <Compile Include="Assets\src\C#\game\GamePlay.cs" />
+     <Compile Include="Assets\src\C#\managers\GameStateManager.cs" />
      <Compile Include="Assets\src\C#\managers\Manager.cs" />
      <Compile Include="Assets\src\C#\managers\PauseManager.cs" />
      <Compile Include="Assets\src\C#\managers\UIManager.cs" />

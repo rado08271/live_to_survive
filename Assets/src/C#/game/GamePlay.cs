@@ -12,6 +12,7 @@ namespace eu.parada.game {
         public GameState gameState { get; private set; }
         public Lungs lungs { get; private set; }
         private Events events;
+        private DayCounter dayCounter = new DayCounter();
 
         public GamePlay(string userName, double difficulty) {
             this.user = new User(userName, difficulty);
@@ -36,7 +37,7 @@ namespace eu.parada.game {
                 gameState = GameState.FAILED;
             }
 
-            if (DayCounter.dayCount >= Constants.GAME_LENGTH) {
+            if (dayCounter.dayCount >= Constants.GAME_LENGTH) {
                 gameState = GameState.NOTIME;
             }
 
@@ -60,13 +61,13 @@ namespace eu.parada.game {
             return (lungs.dayTime == DayTime.SLEEP) ? false : true;
         }
 
-        public int GetCurrentDay() {
-            return DayCounter.dayCount;
+        public int getCurrentDay() {
+            return dayCounter.dayCount;
         }
 
         private int nextDay() {
             user.addScore(1);
-            return DayCounter.increaseDay();
+            return dayCounter.increaseDay();
         }
     }
 }
