@@ -9,7 +9,7 @@ namespace eu.parada.manager {
         public Game game;
 
         public Text sumOfImmuityToBuyText;
-        public Button sumOfImmuityToBuyButton;
+        public Button increaseImmunityButton;
 
         private int immunitiesToBuy = 0;
 
@@ -56,10 +56,10 @@ namespace eu.parada.manager {
         }
 
         void Update() {
-            if (game.getDna() < immunitiesToBuy) {
-                sumOfImmuityToBuyButton.interactable = false;
+            if (game.getDna() <= immunitiesToBuy) {
+                increaseImmunityButton.interactable = false;
             } else {
-                sumOfImmuityToBuyButton.interactable = true;
+                increaseImmunityButton.interactable = true;
 
             }
             sumOfImmuityToBuyText.text = immunitiesToBuy.ToString();

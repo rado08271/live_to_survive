@@ -26,7 +26,7 @@ namespace eu.parada {
         public void playGame() {
             if (filledText) {
                 Manager.getInstance().initNewGame(userNameText.text.ToString(), sliderDifficulty.value);
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1, LoadSceneMode.Single);
             }
         }
 

@@ -15,7 +15,11 @@ namespace eu.parada.manager {
 
         public void quitGame() {
             game.exit();
-            SceneManager.LoadScene(0);
+
+            SceneManager.UnloadScene(SceneManager.GetActiveScene());
+            Resources.UnloadUnusedAssets();
+            Destroy(game);
+            SceneManager.LoadScene(0, LoadSceneMode.Single);
         }
 
         // Update is called once per frame
