@@ -11,12 +11,8 @@ namespace eu.parada.entities.placeable {
 
         public IList<Immunity> getRandomKids(int max) {
             IList<Immunity> kids = new List<Immunity>();
-            if (max > Constants.MAXIMUM_SPREADING_KIDS) {
-                max = Constants.MAXIMUM_SPREADING_KIDS;
-            }
-            if (max <= Constants.STARTING_SPREADING_IMMUNITY) {
-                max = Constants.STARTING_SPREADING_IMMUNITY;
-            }
+            if (max > Constants.MAXIMUM_SPREADING_KIDS) max = Constants.MAXIMUM_SPREADING_KIDS;
+            if (max <= Constants.STARTING_SPREADING_IMMUNITY) max = Constants.STARTING_SPREADING_IMMUNITY;
 
             int randomNumber = Randomizer.getRandomNumberMax(max);
             for (int i = 0; i < randomNumber; i++) {
@@ -27,7 +23,7 @@ namespace eu.parada.entities.placeable {
         }
 
         public double getHarmnessLevel() {
-            return (double)base.harmness * constant;
+            return ((int) base.harmness) * constant;
         }
 
     }

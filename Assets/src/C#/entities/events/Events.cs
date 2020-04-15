@@ -13,7 +13,8 @@ namespace eu.parada.entities.events {
         }
 
         public void addVirus() {
-            int numberOfViruses = Randomizer.getRandomNumberMax(PositiveEffects.getEffectList.Count - PositiveEffects.bonus);
+            int maxViruses = PositiveEffects.getEffectList().Count - PositiveEffects.bonus;
+            int numberOfViruses = Randomizer.getRandomNumberMax(maxViruses);
 
             for (int i = 0; i < numberOfViruses; i++) {
                 lungs.addVirus();

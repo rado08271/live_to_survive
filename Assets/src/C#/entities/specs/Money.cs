@@ -10,9 +10,8 @@ namespace eu.parada.entities.specs {
         }
 
         public bool butStuff(int price) {
-            if (currentMoney - price < 0) {
-                return false;
-            }
+            if (currentMoney - price < 0) return false;
+
             currentMoney -= price;
             return true;
         }

@@ -15,11 +15,9 @@ namespace eu.parada.entities.specs {
         }
 
         public void applyChanges(double value) {
-            if (value == 0) {
-                return;
-            }
+            if (value == 0) return;
 
-            currentHealth += value / Constants.HEALTH_DIVIDE_CONSTANT;
+            currentHealth -= value / Constants.HEALTH_DIVIDE_CONSTANT;
             if (currentHealth >= Constants.MAX_HEALTH) currentHealth = Constants.MAX_HEALTH;
             if (currentHealth <= 0) currentHealth = 0;
         }

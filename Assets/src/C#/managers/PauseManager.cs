@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using eu.parada.game;
 
@@ -13,18 +12,10 @@ namespace eu.parada.manager {
             Debug.Log("Game Paused");
         }
 
+        //TODO: Add whether lost/won/self quit...!!!
         public void quitGame() {
-            game.exit();
-
-            SceneManager.UnloadScene(SceneManager.GetActiveScene());
-            Resources.UnloadUnusedAssets();
-            Destroy(game);
-            SceneManager.LoadScene(0, LoadSceneMode.Single);
+            game.exit(false);
         }
 
-        // Update is called once per frame
-        void Update() {
-            
-        }
     }
 }

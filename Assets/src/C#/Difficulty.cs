@@ -25,10 +25,17 @@ namespace eu.parada {
 
         public void playGame() {
             if (filledText) {
-                Manager.getInstance().initNewGame(userNameText.text.ToString(), sliderDifficulty.value);
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1, LoadSceneMode.Single);
+                StartCoroutine(coroutineFor(0));
             }
         }
+
+        IEnumerator coroutineFor(int seconds) {
+            Manager.getInstance().initNewGame(userNameText.text.ToString(), sliderDifficulty.value);
+            yield return new WaitForSeconds(seconds);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1, LoadSceneMode.Single);
+        }
+
+
 
         public void back() {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);

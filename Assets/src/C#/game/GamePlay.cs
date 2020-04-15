@@ -12,13 +12,14 @@ namespace eu.parada.game {
         public GameState gameState { get; private set; }
         public Lungs lungs { get; private set; }
         private Events events;
-        private DayCounter dayCounter = new DayCounter();
+        private DayCounter dayCounter;
 
         public GamePlay(string userName, double difficulty) {
             this.user = new User(userName, difficulty);
             this.gameState = GameState.PLAYING;
             this.lungs = new Lungs(Constants.LUNGS_CELL_CAPACITY, "Lungs", (int) (difficulty * 100));
             this.events = new Events(lungs);
+            this.dayCounter = new DayCounter((int) (difficulty*100));
         }
 
         public virtual bool newDay() {
@@ -37,7 +38,7 @@ namespace eu.parada.game {
                 gameState = GameState.FAILED;
             }
 
-            if (dayCounter.dayCount >= Constants.GAME_LENGTH) {
+            if (dayCounter.dayCount >= dayCounter.getMaxDays()) {
                 gameState = GameState.NOTIME;
             }
 
@@ -45,9 +46,7 @@ namespace eu.parada.game {
         }
 
         public bool buy(int choice) {
-            if (choice >= PositiveEffects.getEffectList.Capacity) {
-                return false;
-            }
+            if (choice >= PositiveEffects.getEffectList().Count) return false;
 
             return lungs.buyEffect(PositiveEffects.getEffecByIndex(choice));
         }
@@ -63,6 +62,10 @@ namespace eu.parada.game {
 
         public int getCurrentDay() {
             return dayCounter.dayCount;
+        }
+
+        public int getMaxDays() {
+            return dayCounter.getMaxDays();
         }
 
         private int nextDay() {
