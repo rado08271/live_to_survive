@@ -36,45 +36,47 @@ namespace eu.parada.manager {
 
         // Update is called once per frame
         void Update() {
-            healthValue.text = game.getHealth().ToString() + "%";
-            //healthSlider.value = game.getHealth()/100;
-            //healthSlider.value = 0.42f;// game.getHealth()/100;
-            healthSlider.value = game.getHealth()/100.00f;
+            if (game.isLoaded()) {
+                healthValue.text = game.getHealth().ToString() + "%";
+                //healthSlider.value = game.getHealth()/100;
+                //healthSlider.value = 0.42f;// game.getHealth()/100;
+                healthSlider.value = game.getHealth() / 100.00f;
 
-            energyValue.text = game.getEnergy().ToString() + "%";
-            energySlider.value = game.getEnergy()/100.00f;
+                energyValue.text = game.getEnergy().ToString() + "%";
+                energySlider.value = game.getEnergy() / 100.00f;
 
-            cellsCount.text = game.getUserCells().ToString();
-            virusCount.text = game.getUserViruses().ToString();
-            immunityCount.text = game.getUserImmunity().ToString();
+                cellsCount.text = game.getUserCells().ToString();
+                virusCount.text = game.getUserViruses().ToString();
+                immunityCount.text = game.getUserImmunity().ToString();
 
-            moneyValue.text = game.getDna().ToString() + "$";
+                moneyValue.text = game.getDna().ToString() + "$";
 
-            dayCount.text = game.getCurrentDay().ToString();
-            //dayCount.text = game.getDay().ToString();
-            updateDay();
+                dayCount.text = game.getCurrentDay().ToString() + "/" + game.getMaxDays().ToString();
+                //dayCount.text = game.getDay().ToString();
+                updateDay();
 
-            userName.text = game.getUserName().ToString();
-            userScore.text = game.getUserScore().ToString();
+                userName.text = game.getUserName().ToString();
+                userScore.text = game.getUserScore().ToString();
 
-            checkEffect(0);
-            checkEffect(1);
-            checkEffect(2);
-            checkEffect(3);
-            checkEffect(4);
+                checkEffect(0, firstEffect);
+                checkEffect(1, secondEffect);
+                checkEffect(2, thirdEffect);
+                checkEffect(3, fourthEffect);
+                checkEffect(4, fifthEffect);
+            }
         }
 
-        private void checkEffect(int i) {
+        private void checkEffect(int i, Button effect) {
             int currentMoney = game.getDna();
 
             if (!PositiveEffects.getEffecByIndex(i).isActive) {
-                if (currentMoney > PositiveEffects.getEffectList[0].dnaPrice) {
-                    firstEffect.interactable = true;
+                if (currentMoney > PositiveEffects.getEffectList()[i].dnaPrice) {
+                    effect.interactable = true;
                 } else {
-                    firstEffect.interactable = true;
+                    effect.interactable = false;
                 }
             } else {
-                firstEffect.interactable = false;
+                effect.interactable = false;
             }
         }
 

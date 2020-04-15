@@ -22,7 +22,7 @@ namespace eu.parada.user {
 
         public double addScore(double score) {
             if ( score > 0) {
-                this.score += (score + difficulty);
+                this.score += (score + ((int) score * difficulty));
             }
 
             return this.score;

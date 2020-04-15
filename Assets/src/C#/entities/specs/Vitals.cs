@@ -14,8 +14,8 @@ namespace eu.parada.entities.specs {
             energy = new Energy(Constants.STARTING_ENERGY);
         }
         public Vitals(int difficulty) {
-            health = new Health(Constants.STARTING_HEALTH - difficulty);
-            energy = new Energy(Constants.STARTING_ENERGY - difficulty);
+            health = new Health(Constants.STARTING_HEALTH - (difficulty/ Constants.VITALS_DIFFICULTY_CONSTANT));
+            energy = new Energy(Constants.STARTING_ENERGY - (difficulty/ Constants.VITALS_DIFFICULTY_CONSTANT));
             money = new Money(Constants.STARTING_MONEY);
         }
     }

@@ -17,6 +17,10 @@ namespace eu.parada.manager {
             immunitiesToBuy++;
         }
 
+        public void maxIncrease() {
+            immunitiesToBuy = game.getDna();
+        }
+
         public void decreaseValue() {
             immunitiesToBuy--;
             if (immunitiesToBuy < 0) immunitiesToBuy = 0;
@@ -56,14 +60,16 @@ namespace eu.parada.manager {
         }
 
         void Update() {
-            if (game.getDna() <= immunitiesToBuy) {
-                increaseImmunityButton.interactable = false;
-            } else {
-                increaseImmunityButton.interactable = true;
+            if (game.isLoaded()) {
+                if (game.getDna() <= immunitiesToBuy) {
+                    increaseImmunityButton.interactable = false;
+                } else {
+                    increaseImmunityButton.interactable = true;
+
+                }
+                sumOfImmuityToBuyText.text = immunitiesToBuy.ToString();
 
             }
-            sumOfImmuityToBuyText.text = immunitiesToBuy.ToString();
-
         }
     }
 }

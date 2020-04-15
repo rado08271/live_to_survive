@@ -22,11 +22,17 @@ namespace eu.parada.entities.organ {
         public Lungs(int availableCells, string description, int difficulty) {
             this.description = description;
             this.vitals = new Vitals(difficulty);
-
-            this.viruses = (new ListFilter<Virus>()).fillList(new Virus(), difficulty);
+            
+            this.viruses = (new ListFilter<Virus>()).fillList(new Virus(), Virus.getVirusCountBasedOnDifficulty(difficulty));
             this.imunities = (new ListFilter<Immunity>()).fillList(new Immunity(), 0);
-            this.cells = (new ListFilter<Cell>()).fillList(new Cell(), 150);
+            this.cells = (new ListFilter<Cell>()).fillList(new Cell(), availableCells);
             this.boughtEffects = new List<Effect>();
+
+            // FIXME: this is for testing only!!!
+            //this.vitals = new Vitals(96);
+            //this.viruses = (new ListFilter<Virus>()).fillList(new Virus(), 10);
+            //this.imunities = (new ListFilter<Immunity>()).fillList(new Immunity(), 6);
+
         }
 
         public int fight() {
@@ -35,30 +41,23 @@ namespace eu.parada.entities.organ {
                 return 0;
             }
 
-            int virusesCount = viruses.Count;
-            int imunitieCounts = imunities.Count;
+            int virusesCount = (viruses.Count - imunities.Count) >= 0 ? (viruses.Count - imunities.Count) : 0;
+            int imunitieCounts = (imunities.Count - viruses.Count) >= 0 ? (imunities.Count - viruses.Count) : 0;
 
-            if (virusesCount > imunitieCounts) {
-                virusesCount = virusesCount - imunitieCounts;
-                imunitieCounts = 0;
-                if (virusesCount < 0) {
-                    virusesCount = 0;
-                }
-            } else {
-                imunitieCounts = imunitieCounts - virusesCount;
-                virusesCount = 0;
-                if (imunitieCounts < 0) {
-                    imunitieCounts = 0;
-                }
+            double tmpEnergy = vitals.energy.currentEnergy;
+            // You do not have any energy
+            if (!vitals.energy.decreaseEnergy(( imunities.Count - imunitieCounts) * Constants.ENERGY_FOR_ONE_CELL_FIGHT)) {
+                imunitieCounts = imunities.Count - (int) tmpEnergy;
+                virusesCount = viruses.Count - (int) tmpEnergy;
             }
 
             int virusesSize = viruses.Count;
-            for (int i = virusesSize - virusesCount - 1; i >= 0; i--) {
+            for (int i = virusesSize - 1; i >= virusesCount; i--) {
                 viruses.RemoveAt(i);
             }
 
             int immunitiesSize = imunities.Count;
-            for (int i = immunitiesSize - imunitieCounts - 1; i >= 0; i--) {
+            for (int i = immunitiesSize - 1; i >= imunitieCounts; i--) {
                 imunities.RemoveAt(i);
             }
 
@@ -72,39 +71,47 @@ namespace eu.parada.entities.organ {
             if (effect.isActive) return false;
             if (boughtEffects.Contains(effect)) return false;
 
-            boughtEffects.Add(effect);
             effect.isActive = true;
+            boughtEffects.Add(effect);
 
             return true;
         }
+
+        // TODO: If you exceeded the caacity of immunity cells in your body than you will not ve able to get virus...
+        // what about changing this?
         public bool addVirus() {
-            if (lungsState == LungsState.INFECTED) {
-                return false;
+            // TODO: Decide whether could be infected when healthy and does not do what he should..not buying effects
+            if (lungsState == LungsState.WORKING || lungsState == LungsState.CURED) {
+                lungsState = LungsState.INFECTED;
             }
+
+            if (viruses.Count + 1 >= cells.Count) return false;
             viruses.Add(new Virus());
 
-            lungsState = LungsState.INFECTED;
             return true;
         }
 
         public virtual bool addImmunities(IList<Immunity> imumnityToAdd) {
-            if (imunities.Count + imumnityToAdd.Count > cells.Count) {
-                return false;
-            }
-            if (!vitals.money.butStuff(imumnityToAdd.Count)) {
-                return false;
-            }
+            if (imunities.Count + imumnityToAdd.Count > cells.Count) return false;
+            if (!vitals.money.butStuff(imumnityToAdd.Count * Constants.IMUNITY_PRICE)) return false;
 
              ((List<Immunity>) imunities).AddRange(imumnityToAdd);
             return true;
         }
 
         public virtual void endDay() {
+            dayTime = DayTime.MORNING;
+            time = 0;
+            vitals.energy.increaseEnergy(Constants.ENERGY_FOR_ONE_SLEEP);
             hardLaborForImmunity();
             healthCheck();
             reproduction();
-            dayTime = DayTime.MORNING;
-            time = 0;
+
+            if (viruses.Count == 0 && boughtEffects.Count == PositiveEffects.getEffectList().Count && lungsState == LungsState.INFECTED) {
+                lungsState = LungsState.CURED;
+            } else if (viruses.Count >= cells.Count || vitals.health.currentHealth <= 0) {
+                lungsState = LungsState.DESTROYED;
+            }
         }
 
         public int getKindaTime() {
@@ -121,6 +128,9 @@ namespace eu.parada.entities.organ {
                 ((List<Virus>)newViruses).AddRange(v.getRandomKids(boughtEffects.Count));
             }
 
+            // TODO: it cannot be cured if there is still virus it's than infected
+            if (viruses.Count != 0) lungsState = LungsState.INFECTED;
+
             if (viruses.Count + newViruses.Count > cells.Count) {
                 newViruses = (new ListFilter<Virus>()).fillList(newViruses[0], cells.Count);
                 lungsState = LungsState.DESTROYED;
@@ -135,28 +145,30 @@ namespace eu.parada.entities.organ {
 
             if (imunities.Count + newImmunity.Count > cells.Count) {
                 newImmunity = (new ListFilter<Immunity>()).fillList(newImmunity[0], cells.Count);
-                lungsState = LungsState.CURED;
+                if ( viruses.Count == 0) {
+                    lungsState = LungsState.CURED;
+                }
             }
 
-           ((List<Immunity>)imunities).AddRange(newImmunity);
+            ((List<Immunity>)imunities).AddRange(newImmunity);
 
             // earn some small amount of money by reproduction
-            vitals.money.earnMoney((int)((newViruses.Count + newImmunity.Count) * Constants.REWARD_FOR_ANY_CELL_REPRODUCTION));
+            vitals.money.earnMoney((int) ((newViruses.Count + newImmunity.Count) * Constants.REWARD_FOR_ANY_CELL_REPRODUCTION));
         }
 
         private bool increaseDay() {
             if (dayTime == DayTime.SLEEP) return false;
             switch ((time++) % 4) {
-                case (int)DayTime.MORNING:
+                case (int) DayTime.MORNING:
                     dayTime = DayTime.MORNING;
                     break;
-                case (int)DayTime.NOON:
+                case (int) DayTime.NOON:
                     dayTime = DayTime.NOON;
                     break;
-                case (int)DayTime.EVENING:
+                case (int) DayTime.EVENING:
                     dayTime = DayTime.EVENING;
                     break;
-                case (int)DayTime.SLEEP:
+                case (int) DayTime.SLEEP:
                     dayTime = DayTime.SLEEP;
                     return false;
                 default:
@@ -170,12 +182,9 @@ namespace eu.parada.entities.organ {
             double value = 0;
             //TODO: Should health be added when effects are POSITIVE?
             foreach (var v in viruses) {
-                value = Constants.MAX_LOST_HEALTH_PER_LOST_ENERGY - ((Constants.MAX_LOST_HEALTH_PER_LOST_ENERGY - v.getHarmnessLevel()) * vitals.energy.currentEnergy / 100);
+                value += 2*Constants.MAX_LOST_HEALTH_PER_LOST_ENERGY - (Constants.MAX_LOST_HEALTH_PER_LOST_ENERGY + (((Constants.MAX_LOST_HEALTH_PER_LOST_ENERGY + v.getHarmnessLevel()) * vitals.health.currentHealth)/100));
             }
 
-            if (viruses.Count == 0 && boughtEffects.Count == PositiveEffects.getEffectList.Count && lungsState == LungsState.INFECTED) {
-                lungsState = LungsState.CURED;
-            }
             vitals.health.applyChanges(value);
             return value;
         }

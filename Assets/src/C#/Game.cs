@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using eu.parada.game;
 using eu.parada.manager;
 using eu.parada.enums;
+using eu.parada.common;
 
 namespace eu.parada {
     public class Game : MonoBehaviour {
@@ -11,21 +13,31 @@ namespace eu.parada {
         //private GamePlay gamePlay = null;
         private GamePlay gamePlay = Manager.getInstance().getGamePlay();
         private bool newScene = false;
+        public GameObject loadingScreen;
+        private bool loaded = false;
 
-        void Update () {
+        void Start() {
+            StartCoroutine(initNewGame(2));
+        }
+
+        private IEnumerator initNewGame(int secondsForInitialization) {
+            // FIXME: Delete on stage...
+            loadingScreen.SetActive(true);
+            yield return new WaitForSeconds(secondsForInitialization);
+            loadingScreen.SetActive(false);
             if (!newScene) {
                 if (gamePlay == null) {
                     if (Manager.getInstance().getGamePlay() == null) {
                         Debug.Log("No game found initializing test game!");
                         // FIXME this is only for testing puposes
-                        // Manager.getInstance().initNewGame("Tester", 0.23);
+                        Manager.getInstance().initNewGame(Constants.TESTER_NAME, Constants.TESTER_DIFFICULTY);
                     }
 
                     this.gamePlay = Manager.getInstance().getGamePlay();
 
                 }
                 newScene = true;
-
+                loaded = true;
             }
         }
 
@@ -112,7 +124,7 @@ namespace eu.parada {
 
         public int getCurrentDay() {
             //Debug.Log("Getting current day: " + gamePlay.getCurrentDay());
-            return gamePlay.getCurrentDay();
+            return gamePlay.getCurrentDay() + 1;
         }
 
         public DayTime getCurrentDayTime() {
@@ -124,16 +136,39 @@ namespace eu.parada {
             //Debug.Log("Getting current time of the day: " + gamePlay.lungs.getKindaTime().ToString());
             return gamePlay.lungs.getKindaTime();
         }
+        
+        public int getMaxDays() {
+            return gamePlay.getMaxDays();
+        }
 
         public void help() {
             //TODO: todoooo todo toodooo ododododo
         }
 
-        public bool exit() {
+        public bool exit(bool showScreen) {
             //Debug.Log("Stopping the game");
+
+            loaded = false;
+
+            // UNLOADING PROCESS
+            SceneManager.UnloadScene(SceneManager.GetActiveScene());
+            Resources.UnloadUnusedAssets();
+            Destroy(this);
+            SceneManager.LoadScene(0, LoadSceneMode.Single);
+
+            // VARS UNSETTING PROCESS
+            loadingScreen.SetActive(true);
             newScene = false;
-            Manager.getInstance().stopGame();
+
+            // FIXME: It changes earlier than last async call to Update()!
+            // showScreen is called only if lost/won game
+            if ( showScreen ) {
+                Manager.getInstance().stopGame();
+            }
             return false;
+        }
+        public bool isLoaded() {
+            return loaded;
         }
     }
 }
