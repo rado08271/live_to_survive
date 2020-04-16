@@ -13,6 +13,7 @@ namespace eu.parada.game {
         public Lungs lungs { get; private set; }
         private Events events;
         private DayCounter dayCounter;
+        
 
         public GamePlay(string userName, double difficulty) {
             this.user = new User(userName, difficulty);

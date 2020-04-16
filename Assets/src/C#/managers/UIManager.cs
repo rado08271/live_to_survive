@@ -33,6 +33,8 @@ namespace eu.parada.manager {
         public Button fourthEffect;
         public Button fifthEffect;
 
+        
+
 
         // Update is called once per frame
         void Update() {
@@ -73,10 +75,11 @@ namespace eu.parada.manager {
                 if (currentMoney > PositiveEffects.getEffectList()[i].dnaPrice) {
                     effect.interactable = true;
                 } else {
-                    effect.interactable = false;
+                    //effect.interactable = false;
+                   
                 }
             } else {
-                effect.interactable = false;
+                //effect.interactable = false;
             }
         }
 

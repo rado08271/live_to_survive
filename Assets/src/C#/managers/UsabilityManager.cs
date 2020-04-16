@@ -7,9 +7,9 @@ using eu.parada.common;
 namespace eu.parada.manager {
     public class UsabilityManager : MonoBehaviour {
         public Game game;
-
         public Text sumOfImmuityToBuyText;
         public Button increaseImmunityButton;
+        public MessaggingManager messaggingManager;
 
         private int immunitiesToBuy = 0;
 
@@ -48,7 +48,8 @@ namespace eu.parada.manager {
         }
 
         public void buyFifthEffect() {
-            game.buyEffects(4);
+            if(!game.buyEffects(4))
+                messaggingManager.ShowMessagge("ahoj");
         }
 
         public void attack() {
