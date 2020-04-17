@@ -5,7 +5,7 @@ namespace eu.parada.common {
 	public class Constants {
         // TODO: DELETE THIS IT'S ONLY FOR TESTING
         public const string TESTER_NAME = "TESTER";
-        public const double TESTER_DIFFICULTY = 0.99;
+        public const double TESTER_DIFFICULTY = 0.5;
 
         // THIS IS FOR SPREADING
         public const int MAXIMUM_SPREADING_KIDS = 3;

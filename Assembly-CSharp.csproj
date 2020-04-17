@@ -57,6 +57,7 @@
      <Compile Include="Assets\src\C#\common\DayCounter.cs" />
      <Compile Include="Assets\src\C#\common\ListFilter.cs" />
      <Compile Include="Assets\src\C#\common\Randomizer.cs" />
+     <Compile Include="Assets\src\C#\common\StringConstant.cs" />
      <Compile Include="Assets\src\C#\common\StringUtils.cs" />
      <Compile Include="Assets\src\C#\Difficulty.cs" />
      <Compile Include="Assets\src\C#\entities\events\Effect.cs" />
@@ -81,6 +82,8 @@
      <Compile Include="Assets\src\C#\enums\LungsState.cs" />
      <Compile Include="Assets\src\C#\Game.cs" />
      <Compile Include="Assets\src\C#\game\GamePlay.cs" />
+     <Compile Include="Assets\src\C#\generator2d\Generate.cs" />
+     <Compile Include="Assets\src\C#\managers\DayManager.cs" />
      <Compile Include="Assets\src\C#\managers\DifficultyUIManager.cs" />
      <Compile Include="Assets\src\C#\managers\GameStateManager.cs" />
      <Compile Include="Assets\src\C#\managers\Manager.cs" />

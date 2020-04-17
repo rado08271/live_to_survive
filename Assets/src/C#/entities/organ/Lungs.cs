@@ -28,6 +28,8 @@ namespace eu.parada.entities.organ {
             this.cells = (new ListFilter<Cell>()).fillList(new Cell(), availableCells);
             this.boughtEffects = new List<Effect>();
 
+            this.dayTime = DayTime.MORNING;
+
             // FIXME: this is for testing only!!!
             //this.vitals = new Vitals(96);
             //this.viruses = (new ListFilter<Virus>()).fillList(new Virus(), 10);
@@ -158,17 +160,17 @@ namespace eu.parada.entities.organ {
 
         private bool increaseDay() {
             if (dayTime == DayTime.SLEEP) return false;
-            switch ((time++) % 4) {
-                case (int) DayTime.MORNING:
+            switch ((++time) % 4) {
+                case (int) 0:
                     dayTime = DayTime.MORNING;
                     break;
-                case (int) DayTime.NOON:
+                case (int) 1:
                     dayTime = DayTime.NOON;
                     break;
-                case (int) DayTime.EVENING:
+                case (int) 2:
                     dayTime = DayTime.EVENING;
                     break;
-                case (int) DayTime.SLEEP:
+                case (int) 3:
                     dayTime = DayTime.SLEEP;
                     return false;
                 default:

@@ -34,6 +34,7 @@ namespace eu.parada.entities.events {
 
         public static bool buyEffect(Effect effect) {
             if (!effectList.Contains(effect)) {
+                StringUtils.getInstance().addMessage("Sorry there is no such effect");
                 return false;
             }
 
