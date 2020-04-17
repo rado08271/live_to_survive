@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using eu.parada.common;
+using eu.parada.generator;
 
 namespace eu.parada.manager {
     public class UsabilityManager : MonoBehaviour {
@@ -10,6 +11,10 @@ namespace eu.parada.manager {
 
         public Text sumOfImmuityToBuyText;
         public Button increaseImmunityButton;
+
+        public Generate cellGenerator;
+        public Generate immunityGenerator;
+        public Generate virusGenerator;
 
         private int immunitiesToBuy = 0;
 
@@ -29,6 +34,11 @@ namespace eu.parada.manager {
         public void buyImmunity () {
             if (game.buyImmunity(immunitiesToBuy))
                 immunitiesToBuy = 0;
+
+            // TODO: WTF...Delete pls
+            cellGenerator.newInit(game.getUserCells());
+            virusGenerator.newInit(game.getUserViruses());
+            immunityGenerator.newInit(game.getUserImmunity());
         }
 
         public void buyFirstEffect() {
@@ -53,10 +63,20 @@ namespace eu.parada.manager {
 
         public void attack() {
             game.fight();
+
+            // TODO: WTF...Delete pls
+            cellGenerator.newInit(game.getUserCells());
+            virusGenerator.newInit(game.getUserViruses());
+            immunityGenerator.newInit(game.getUserImmunity());
         }
 
         public void skipTurn() {
             game.nextTurn();
+
+            // TODO: WTF...Delete pls
+            cellGenerator.newInit(game.getUserCells());
+            virusGenerator.newInit(game.getUserViruses());
+            immunityGenerator.newInit(game.getUserImmunity());
         }
 
         void Update() {

@@ -30,6 +30,7 @@ namespace eu.parada {
         }
 
         IEnumerator coroutineFor(int seconds) {
+            Manager.getInstance().stopGame();
             Manager.getInstance().initNewGame(userNameText.text.ToString(), sliderDifficulty.value);
             yield return new WaitForSeconds(seconds);
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1, LoadSceneMode.Single);

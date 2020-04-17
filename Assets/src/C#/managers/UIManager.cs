@@ -22,7 +22,6 @@ namespace eu.parada.manager {
         public Text moneyValue;
 
         public Text dayCount;
-        public Image dayTimeIcon;
 
         public Text userName;
         public Text userScore;
@@ -32,7 +31,6 @@ namespace eu.parada.manager {
         public Button thirdEffect;
         public Button fourthEffect;
         public Button fifthEffect;
-
 
         // Update is called once per frame
         void Update() {
@@ -49,11 +47,10 @@ namespace eu.parada.manager {
                 virusCount.text = game.getUserViruses().ToString();
                 immunityCount.text = game.getUserImmunity().ToString();
 
-                moneyValue.text = game.getDna().ToString() + "$";
+                moneyValue.text = game.getDna().ToString();
 
                 dayCount.text = game.getCurrentDay().ToString() + "/" + game.getMaxDays().ToString();
                 //dayCount.text = game.getDay().ToString();
-                updateDay();
 
                 userName.text = game.getUserName().ToString();
                 userScore.text = game.getUserScore().ToString();
@@ -73,22 +70,12 @@ namespace eu.parada.manager {
                 if (currentMoney > PositiveEffects.getEffectList()[i].dnaPrice) {
                     effect.interactable = true;
                 } else {
+                    // You do not have enough money
                     effect.interactable = false;
                 }
             } else {
+                // Effect is already bought
                 effect.interactable = false;
-            }
-        }
-
-        private void updateDay() {
-            if ( game.getCurrentDayTime() == DayTime.MORNING) {
-                dayTimeIcon.color = Color.red;
-            } else if (game.getCurrentDayTime() == DayTime.NOON) {
-                dayTimeIcon.color = Color.yellow;
-            } else if (game.getCurrentDayTime() == DayTime.EVENING) {
-                dayTimeIcon.color = Color.green;
-            } else if (game.getCurrentDayTime() == DayTime.SLEEP) {
-                dayTimeIcon.color = Color.black;
             }
         }
     }
