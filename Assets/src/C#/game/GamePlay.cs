@@ -60,6 +60,10 @@ namespace eu.parada.game {
             return (lungs.dayTime == DayTime.SLEEP) ? false : true;
         }
 
+        public virtual double changedHealth() {
+            return lungs.getHealthToChange();
+        }
+
         public int getCurrentDay() {
             return dayCounter.dayCount;
         }

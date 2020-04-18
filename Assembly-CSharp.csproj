@@ -85,6 +85,7 @@
      <Compile Include="Assets\src\C#\generator2d\Generate.cs" />
      <Compile Include="Assets\src\C#\managers\DayManager.cs" />
      <Compile Include="Assets\src\C#\managers\DifficultyUIManager.cs" />
+     <Compile Include="Assets\src\C#\managers\GamePlayManager.cs" />
      <Compile Include="Assets\src\C#\managers\GameStateManager.cs" />
      <Compile Include="Assets\src\C#\managers\Manager.cs" />
      <Compile Include="Assets\src\C#\managers\PauseManager.cs" />

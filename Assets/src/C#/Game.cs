@@ -6,6 +6,7 @@ using eu.parada.game;
 using eu.parada.manager;
 using eu.parada.enums;
 using eu.parada.common;
+using eu.parada.entities.events;
 
 namespace eu.parada {
     public class Game : MonoBehaviour {
@@ -69,7 +70,15 @@ namespace eu.parada {
         //TOOD: Show effects when money available
         public int showEffects() {
             //Debug.Log("Getting effects");
-            return -1;
+            return PositiveEffects.getEffectList().Count;
+        }
+
+        public int effectBonus() {
+            return PositiveEffects.bonus;
+        }
+
+        public int showNewDayHealth() {
+            return (int) gamePlay.changedHealth();
         }
 
         public bool buyImmunity(int count) {
