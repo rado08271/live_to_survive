@@ -106,7 +106,7 @@ namespace eu.parada.entities.organ {
             time = 0;
             vitals.energy.increaseEnergy(Constants.ENERGY_FOR_ONE_SLEEP);
             hardLaborForImmunity();
-            healthCheck();
+            healthCheck(true);
             reproduction();
 
             if (viruses.Count == 0 && boughtEffects.Count == PositiveEffects.getEffectList().Count && lungsState == LungsState.INFECTED) {
@@ -160,7 +160,7 @@ namespace eu.parada.entities.organ {
 
         private bool increaseDay() {
             if (dayTime == DayTime.SLEEP) return false;
-            switch ((++time) % 4) {
+            switch ((time++) % 4) {
                 case (int) 0:
                     dayTime = DayTime.MORNING;
                     break;
@@ -180,15 +180,19 @@ namespace eu.parada.entities.organ {
             return true;
         }
 
-        private double healthCheck() {
+        private double healthCheck(bool change) {
             double value = 0;
             //TODO: Should health be added when effects are POSITIVE?
             foreach (var v in viruses) {
                 value += 2*Constants.MAX_LOST_HEALTH_PER_LOST_ENERGY - (Constants.MAX_LOST_HEALTH_PER_LOST_ENERGY + (((Constants.MAX_LOST_HEALTH_PER_LOST_ENERGY + v.getHarmnessLevel()) * vitals.health.currentHealth)/100));
             }
 
-            vitals.health.applyChanges(value);
+            if (change) vitals.health.applyChanges(value);
             return value;
+        }
+
+        public double getHealthToChange() {
+            return healthCheck(false);
         }
     }
 }
