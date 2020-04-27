@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using eu.parada.game;
+using eu.parada.common;
+using eu.parada.entities.events;
 
 namespace eu.parada.manager {
     public class Manager {
@@ -22,7 +24,9 @@ namespace eu.parada.manager {
             if (!started && game == null) {
                 started = true;
                 game = new GamePlay(userName, difficulty);
-            } 
+                PositiveEffects.loseEffects();
+                StringUtils.getInstance().clearLog();
+            }
         }
 
         public void stopGame() {

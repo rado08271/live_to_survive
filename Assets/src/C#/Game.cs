@@ -158,22 +158,24 @@ namespace eu.parada {
             //Debug.Log("Stopping the game");
 
             loaded = false;
-
+            
             // UNLOADING PROCESS
             SceneManager.UnloadScene(SceneManager.GetActiveScene());
             Resources.UnloadUnusedAssets();
             Destroy(this);
-            SceneManager.LoadScene(0, LoadSceneMode.Single);
+
+            // FIXME: It changes earlier than last async call to Update()!
+            // showScreen is called only if lost/won game
+            if (!showScreen) {
+                SceneManager.LoadScene(0, LoadSceneMode.Single);
+            } else {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1, LoadSceneMode.Single);
+            }
 
             // VARS UNSETTING PROCESS
             loadingScreen.SetActive(true);
             newScene = false;
 
-            // FIXME: It changes earlier than last async call to Update()!
-            // showScreen is called only if lost/won game
-            if ( showScreen ) {
-                Manager.getInstance().stopGame();
-            }
             return false;
         }
         public bool isLoaded() {
