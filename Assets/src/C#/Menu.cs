@@ -24,12 +24,15 @@ namespace eu.parada {
         }
 
         public void quitGame() {
-            Debug.Log("Quit");
             Application.Quit();
         }
 
         public void resumeGame() {
             StartCoroutine(continueGame());
+        }
+
+        public void settings() {
+            SceneManager.LoadScene(4, LoadSceneMode.Single);
         }
 
         private IEnumerator continueGame() {

@@ -36,9 +36,9 @@ namespace eu.parada.manager {
                 immunitiesToBuy = 0;
 
             // TODO: WTF...Delete pls
-            cellGenerator.newInit(game.getUserCells());
-            virusGenerator.newInit(game.getUserViruses());
-            immunityGenerator.newInit(game.getUserImmunity());
+            //cellGenerator.newInit(game.getUserCells());
+            //virusGenerator.newInit(game.getUserViruses());
+            //immunityGenerator.newInit(game.getUserImmunity());
         }
 
         public void buyFirstEffect() {
@@ -65,18 +65,18 @@ namespace eu.parada.manager {
             game.fight();
 
             // TODO: WTF...Delete pls
-            cellGenerator.newInit(game.getUserCells());
-            virusGenerator.newInit(game.getUserViruses());
-            immunityGenerator.newInit(game.getUserImmunity());
+            //cellGenerator.newInit(game.getUserCells());
+            //virusGenerator.newInit(game.getUserViruses());
+            //immunityGenerator.newInit(game.getUserImmunity());
         }
 
         public void skipTurn() {
             game.nextTurn();
 
             // TODO: WTF...Delete pls
-            cellGenerator.newInit(game.getUserCells());
-            virusGenerator.newInit(game.getUserViruses());
-            immunityGenerator.newInit(game.getUserImmunity());
+            //cellGenerator.newInit(game.getUserCells());
+            //virusGenerator.newInit(game.getUserViruses());
+            //immunityGenerator.newInit(game.getUserImmunity());
         }
 
         void Update() {

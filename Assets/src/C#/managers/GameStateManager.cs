@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using eu.parada.enums;
 using eu.parada.game;
+using eu.parada.common;
 
 namespace eu.parada.manager {
     public class GameStateManager : MonoBehaviour {
@@ -17,32 +18,32 @@ namespace eu.parada.manager {
 
                 if (state == BaseState.INPROGRESS) {
                     if (gamePlay.gameState == GameState.FAILED) {
-                        Debug.LogError("Sorry virus beaten you...*Nearer My Go to Thee * plays in the background.Your corpse smells terrible.\n You should be more concise in the future! Look at the man next to you he is also dead. Good news is that there are not many like you");
+                        Debug.Log(StringConstant.LOST_GAME_FAILED_DEAD);
                         state = BaseState.LOST;
                     } else if (gamePlay.gameState == GameState.NOTIME) {
-                        Debug.LogError("You finished the game!");
+                        Debug.Log(StringConstant.NO_TIME_BASIC);
 
                         if (gamePlay.lungs.lungsState == LungsState.CURED) {
-                            Debug.LogError("And you won! Congratulation there are many like you!");
+                            Debug.Log(StringConstant.NO_TIME_GAME_WON);
                             state = BaseState.WON;
                         } else if (gamePlay.lungs.lungsState == LungsState.INFECTED) {
-                            Debug.LogError("And you are still infected. But good fight, but you are still infected I don't think you will be able to survive next days");
+                            Debug.Log(StringConstant.NO_TIME_LOST_INFECTED);
                             state = BaseState.LOST;
                         } else if (gamePlay.lungs.lungsState == LungsState.WORKING) {
-                            Debug.LogError("And you didn't get infected?! You cheater! Okay I think it's honest to say that you find your own way to beating this game");
+                            Debug.Log(StringConstant.NO_TIME_LOST_NOT_INFECTED);
                             state = BaseState.WON;
                         } else if (gamePlay.lungs.lungsState == LungsState.DESTROYED) {
-                            Debug.LogError("*Nearer My Go to Thee* plays in the background. Your corpse smells terrible");
+                            Debug.Log(StringConstant.NO_TIME_LOST_DEAD);
                             state = BaseState.LOST;
                         }
                     } else if (gamePlay.gameState == GameState.PLAYING) {
                         // nothing
                         state = BaseState.INPROGRESS;
                     } else if (gamePlay.gameState == GameState.WON) {
-                        Debug.LogError("Congratulations, " + gamePlay.user.name + " you finished the game in " + gamePlay.getCurrentDay() + " days. Your final score is: " + gamePlay.user.score);
+                        Debug.Log(StringConstant.WON_GAME_STATE);
                         state = BaseState.WON;
                     } else {
-                        Debug.LogError("Uhm I don't know how, but you reached matrix");
+                        Debug.Log(StringConstant.UNKNOWN_GAMESTATE_ERROR);
                         state = BaseState.DONE;
                     }
                 } else {
