@@ -1028,7 +1028,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Version 1.0.26
+  m_Text: 'Version 1.0.30
 
 '
 --- !u!222 &747020709
@@ -2433,7 +2433,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: COV_00
+  m_Text: LIVE_TO_SURVIVE
 --- !u!222 &1922181991
 CanvasRenderer:
   m_ObjectHideFlags: 0

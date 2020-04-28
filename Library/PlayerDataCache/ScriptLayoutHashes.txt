@@ -1,11 +1,12 @@
 WindowsStandalone
 PlayerPath?
-D:/hotovo/prjekty/unity/COVID_1.0.1_build/COVID_1.0.1_build.exe
+D:/hotovo/prjekty/unity/COVID_1.0.30_dev/COVID_1.0.30_dev.exe
 SceneListBegin?
 Assets/scenes/Menu.unity
 Assets/scenes/Difficulty.unity
 Assets/scenes/GamePlay.unity
 Assets/scenes/PostGameScene.unity
+Assets/scenes/TestValues.unity
 SceneListEnd?
 cab8c7a0b490276dd17decd2e767a0ca Assembly-CSharp.dll:eu.parada.manager.GameStateManager
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationPlayableAsset
@@ -20,7 +21,10 @@ ff05dcdf90651c3d98a9cad3df5e471e UnityEngine.Timeline.dll:UnityEngine.Timeline.C
 30afa8783a8bbee2e465ec9ce1efaee2 UnityEngine.Timeline.dll:UnityEngine.Timeline.GroupTrack
 30afa8783a8bbee2e465ec9ce1efaee2 UnityEngine.Timeline.dll:UnityEngine.Timeline.PlayableTrack
 607d64d2c4bc76ac9876e6f7b9cc7edf UnityEngine.Timeline.dll:UnityEngine.Timeline.TimelineAsset
+738da148e84b12ecb3aaee256d15a31f Assembly-CSharp.dll:eu.parada.manager.PopupInfo
 365b24735edb5a446ad3e88028e73a3b Assembly-CSharp.dll:eu.parada.manager.GamePlayManager
+4a9fdfeba239f4e4bc6310b1b5982be4 Assembly-CSharp.dll:eu.parada.manager.LogsManager
+eab9d2b3796e6cf53617288197f90516 Assembly-CSharp.dll:eu.parada.manager.PopupManager
 a35dc9cca2faebc5f5f1aeb9e8e47bbe UnityEngine.UI.dll:UnityEngine.UI.AspectRatioFitter
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.UI.dll:UnityEngine.EventSystems.BaseInput
 49cd62a578efc0a599b810a2b66cd49c UnityEngine.UI.dll:UnityEngine.UI.Button
@@ -158,5 +162,7 @@ c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.Spa
 45f3431f0103c41611e8d4eec3d439df UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.SpatialMappingRenderer
 9de3a22eca9aefadba2d10d5987cefe3 UnityEngine.SpatialTracking.dll:UnityEngine.SpatialTracking.TrackedPoseDriver
 a69f8ec321a0dc744d0aef2596562cd5 Assembly-CSharp.dll:eu.parada.Game
-3f0570f831a3001530858577039d7e75 Assembly-CSharp.dll:eu.parada.manager.PauseManager
+2defd2fe3b02cfbc6867087ea2d4da3a Assembly-CSharp.dll:eu.parada.TestValues
 bbc6e5286f9b8cc9eafb9896c75589db Assembly-CSharp.dll:eu.parada.PostGame
+3f0570f831a3001530858577039d7e75 Assembly-CSharp.dll:eu.parada.manager.PauseManager
+da0e66eb0c6c35d636ab13bf36027772 Assembly-CSharp.dll:eu.parada.manager.StoryManager

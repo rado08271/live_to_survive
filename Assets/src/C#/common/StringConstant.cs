@@ -13,13 +13,13 @@ namespace eu.parada.common {
         public const string INCREASE_bUTTON_INFO = "This button is use to increase value of imunity for buy";
         public const string MAX_BUTTON_INFO = "This button set a maximum value of immunity, you can buy";
 
-        public const string LEARNING_BUTTON_INFO = "This button is use to buy new achievment LEARNING ";
-        public const string WASHING_HANDS_BUTTON_INFO = "This button is use to buy new achievment WASHING HANDS";
-        public const string WEARING_PROTECTION_BUTTON_INFO = "This button is use to buy new achievment WEARING PROTECTION";
-        public const string SOCIAL_DISTENCING_BUTTON_INFO = "This button is use to buy new achievment SOCIAL DISTENCING";
-        public const string HEALTHY_REGIME_BUTTON_INFO = "This button is use to buy new achievment HEALTHY REGIME";
+        public const string LEARNING_BUTTON_INFO = "Buy new achievment LEARNING \nPrice: 5";
+        public const string WASHING_HANDS_BUTTON_INFO = "Buy new achievment WASHING HANDS. \nPriace: 15";
+        public const string WEARING_PROTECTION_BUTTON_INFO = "Buy new achievment WEARING PROTECTION. \nPrice: 25";
+        public const string SOCIAL_DISTENCING_BUTTON_INFO = "Buy new achievment SOCIAL DISTENCING. \nPrice: 35";
+        public const string HEALTHY_REGIME_BUTTON_INFO = "Buy new achievment HEALTHY REGIME. \nPrice: 45";
 
-        public const string FIGHT_BUTTON_INFO = "This button is use to start fight with a current value of bought immunities \n After fight day will continue in next phase";
+        public const string FIGHT_BUTTON_INFO = "This button is used to start fight with a current value of bought immunities \nAfter fight day will continue in next phase.";
         public const string NEXT_DAY_INFO = "This button is use to skip current day";
 
         public const string HEALTH_ICON_INFO = "This icon show current value of your health";

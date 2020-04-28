@@ -16,6 +16,8 @@ namespace eu.parada.manager {
         public Generate immunityGenerator;
         public Generate virusGenerator;
 
+        public Text priceForDna;
+
         private int immunitiesToBuy = 0;
 
         public void increaseValue() {
@@ -23,7 +25,7 @@ namespace eu.parada.manager {
         }
 
         public void maxIncrease() {
-            immunitiesToBuy = game.getDna();
+            immunitiesToBuy = (int) (game.getDna());
         }
 
         public void decreaseValue() {
@@ -32,7 +34,7 @@ namespace eu.parada.manager {
         }
 
         public void buyImmunity () {
-            if (game.buyImmunity(immunitiesToBuy))
+            if (game.buyImmunity((int)(immunitiesToBuy * Constants.IMUNITY_PRICE)))
                 immunitiesToBuy = 0;
 
             // TODO: WTF...Delete pls
@@ -89,8 +91,8 @@ namespace eu.parada.manager {
                     increaseImmunityButton.interactable = true;
 
                 }
-                sumOfImmuityToBuyText.text = immunitiesToBuy.ToString();
-
+                sumOfImmuityToBuyText.text = ((int)(immunitiesToBuy * Constants.IMUNITY_PRICE)).ToString();
+                priceForDna.text = immunitiesToBuy.ToString();
             }
         }
     }
