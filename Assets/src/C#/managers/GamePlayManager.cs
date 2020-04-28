@@ -103,7 +103,7 @@ namespace eu.parada.manager {
         }
 
         private void health() {
-            int health = (int)(game.getHealth() - (game.showNewDayHealth() / Constants.HEALTH_DIVIDE_CONSTANT));
+            int health = (int)(game.getHealth() - (game.showNewDayHealth() / (Constants.LUNGS_CELL_CAPACITY / Constants.MAX_HEALTH)));
             if (health <= 0) health = 0;
 
             nextDayHealth.text = ("Health: " + health.ToString() + "");

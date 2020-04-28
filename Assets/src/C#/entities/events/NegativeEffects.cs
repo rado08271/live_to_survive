@@ -5,11 +5,11 @@ using eu.parada.common;
 namespace eu.parada.entities.events {
     public class NegativeEffects {
         private static List<Effect> effectList = new List<Effect>() {
-            (new Effect("Meeting a friend", Constants.PRICE_FOR_WASHING_HANDS)),
-            (new Effect("Shopping", Constants.PRICE_FOR_WEARING_PROTECTION)),
-            (new Effect("Going for a drink", Constants.PRICE_FOR_SOCIAL_DISTANCING)),
-            (new Effect("Traveling the world", Constants.PRICE_FOR_HEALTHY_REGIMEN)),
-            (new Effect("Pizza, pasta", Constants.PRICE_FOR_LEARNING))
+            (new Effect("Meeting a friend", null, Constants.PRICE_FOR_WASHING_HANDS)),
+            (new Effect("Shopping", null, Constants.PRICE_FOR_WEARING_PROTECTION)),
+            (new Effect("Going for a drink", null, Constants.PRICE_FOR_SOCIAL_DISTANCING)),
+            (new Effect("Traveling the world", null, Constants.PRICE_FOR_HEALTHY_REGIMEN)),
+            (new Effect("Pizza, pasta", null, Constants.PRICE_FOR_LEARNING))
         };
 
         public static List<Effect> getEffectList {

@@ -93,6 +93,7 @@
      <Compile Include="Assets\src\C#\managers\PauseManager.cs" />
      <Compile Include="Assets\src\C#\managers\PopupInfo.cs" />
      <Compile Include="Assets\src\C#\managers\PopupManager.cs" />
+     <Compile Include="Assets\src\C#\managers\StoryManager.cs" />
      <Compile Include="Assets\src\C#\managers\UIManager.cs" />
      <Compile Include="Assets\src\C#\managers\UsabilityManager.cs" />
      <Compile Include="Assets\src\C#\Menu.cs" />

@@ -11,6 +11,5 @@ namespace eu.parada.common {
         public static int getRandomNumberMax(int max) {
             return getRandomNumber(0, max);
         }
-
     }
 }

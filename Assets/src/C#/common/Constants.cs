@@ -10,7 +10,7 @@ namespace eu.parada.common {
         // THIS IS FOR SPREADING
         public static int MAXIMUM_SPREADING_KIDS = 3;
         public static int STARTING_SPREADING_IMMUNITY = 1;
-        public static int STARTING_SPREADING_VIRUS = MAXIMUM_SPREADING_KIDS;
+        public static int STARTING_SPREADING_VIRUS = 3;
 
         // GAME TIME AND DIFFICULTY
         public static int MAX_GAME_LENGTH = 28;
@@ -43,13 +43,14 @@ namespace eu.parada.common {
 
         // VITALS STATS
         public static double MAX_HEALTH = 100;
-        //public const double HEALTH_DIVIDE_CONSTANT = 1; //TODO: This will be done more generic maybe...
-        public static double HEALTH_DIVIDE_CONSTANT = LUNGS_CELL_CAPACITY / MAX_HEALTH;    //TODO: This will be done more generic maybe...
         public static double STARTING_MONEY = 0;
-        public static double STARTING_HEALTH = MAX_HEALTH;
-        public static double STARTING_ENERGY = MAX_HEALTH;
+        public static double STARTING_HEALTH = 100;
+        public static double STARTING_ENERGY = 100;
 
         // CELLS
         public static int LUNGS_CELL_CAPACITY = 300;
+
+        // HOW OFTEN IS MESSAGE SHOWS
+        public static int POSSIBILITY_OF_GETTING_MESSAGE = 500;
     }
 }
