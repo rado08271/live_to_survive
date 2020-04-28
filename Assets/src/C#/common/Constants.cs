@@ -34,7 +34,7 @@ namespace eu.parada.common {
         public static double PRICE_FOR_WEARING_PROTECTION = 25;
         public static double PRICE_FOR_SOCIAL_DISTANCING = 35;
         public static double PRICE_FOR_HEALTHY_REGIMEN = 45;
-        public static double IMUNITY_PRICE = 1;
+        public static double IMUNITY_PRICE = 0.8f;
 
         // HARMNESS VALUES
         public static double HARMNESS_FOR_CELL = 0;

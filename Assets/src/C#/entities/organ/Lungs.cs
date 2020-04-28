@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System;
 using System.Collections.Generic;
 using eu.parada.entities.specs;
 using eu.parada.enums;
@@ -64,7 +65,7 @@ namespace eu.parada.entities.organ {
             }
 
             vitals.money.earnMoney((int)(immunitiesSize - imunities.Count * Constants.REWARD_FOR_FIGHT));
-            StringUtils.getInstance().addMessage(new StringMessage("Your immunities killed " + (immunitiesSize - imunities.Count) + " viruses, but lost " + (tmpEnergy - vitals.energy.currentEnergy) + "energy in fight", true));
+            StringUtils.getInstance().addMessage(new StringMessage("Your immunities killed " + (immunitiesSize - imunities.Count) + " viruses, but lost " + (tmpEnergy - vitals.energy.currentEnergy) + " energy in fight", true));
 
             return immunitiesSize - imunities.Count;
         }
@@ -98,9 +99,9 @@ namespace eu.parada.entities.organ {
 
         public virtual bool addImmunities(IList<Immunity> imumnityToAdd) {
             if (imunities.Count + imumnityToAdd.Count > cells.Count) return false;
-            if (!vitals.money.butStuff(imumnityToAdd.Count * Constants.IMUNITY_PRICE)) return false;
+            if (!vitals.money.butStuff(Math.Ceiling(imumnityToAdd.Count / Constants.IMUNITY_PRICE))) return false;
 
-            StringUtils.getInstance().addMessage(new StringMessage("Your bought " + (imumnityToAdd.Count) + " immunities and payed " + (imumnityToAdd.Count * Constants.IMUNITY_PRICE) + "DNA", true));
+            StringUtils.getInstance().addMessage(new StringMessage("Your bought " + (imumnityToAdd.Count) + " immunities and payed " + Math.Ceiling(imumnityToAdd.Count / Constants.IMUNITY_PRICE) + " DNA", true));
 
             ((List<Immunity>) imunities).AddRange(imumnityToAdd);
             return true;

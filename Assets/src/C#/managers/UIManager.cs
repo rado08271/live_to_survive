@@ -75,6 +75,7 @@ namespace eu.parada.manager {
                 }
             } else {
                 // Effect is already bought
+                effect.image.color = new Color(0f, 0f, 0f, 1f); ;
                 effect.interactable = false;
             }
         }
