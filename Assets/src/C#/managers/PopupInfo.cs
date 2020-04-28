@@ -125,6 +125,7 @@ namespace eu.parada.manager {
                     showTitle = true;
                 } else {
                     advancedMessage(message.getContent());
+                    showTitle = false;
                 }
             } else {
                 if (message.isTitled()) {
@@ -132,6 +133,7 @@ namespace eu.parada.manager {
                     simpleTitledMessage(message.getTitle(), message.getContent(), message.getLength());
                 } else {
                     simpleMessage(message.getContent(), message.getLength());
+                    showTitle = false;
                 }
             }
         }

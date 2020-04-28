@@ -72,6 +72,8 @@ namespace eu.parada.manager {
 
         public void skipTurn() {
             game.nextTurn();
+            StringMessage msg = game.getRandomFact();
+            StringUtils.getInstance().addMessage(msg);
 
             // TODO: WTF...Delete pls
             //cellGenerator.newInit(game.getUserCells());

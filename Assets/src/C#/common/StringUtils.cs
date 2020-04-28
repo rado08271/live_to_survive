@@ -42,7 +42,7 @@ namespace eu.parada.common {
 
             for (int i = 0; i < stack.Count; i++) {
                 if (stack[i].isLoggable()) {
-                    logs.Add(stack[i].getContent());
+                    logs.Add(stack[i].getTitle());
                     if (count++ == numberOfMsgs -1) {
                         break;
                     }
@@ -53,6 +53,7 @@ namespace eu.parada.common {
         }
 
         public bool addMessage(StringMessage message) {
+            if (message == null || stack.Contains(message)) return false;
             stack.Insert(0, message);
             if (stack.Contains(message)) return false;
 

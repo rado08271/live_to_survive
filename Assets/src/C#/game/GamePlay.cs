@@ -14,6 +14,7 @@ namespace eu.parada.game {
         private Events events;
         private DayCounter dayCounter;
 
+
         public GamePlay(string userName, double difficulty) {
             this.user = new User(userName, difficulty);
             this.gameState = GameState.PLAYING;
@@ -47,7 +48,6 @@ namespace eu.parada.game {
 
         public bool buy(int choice) {
             if (choice >= PositiveEffects.getEffectList().Count) return false;
-
             return lungs.buyEffect(PositiveEffects.getEffecByIndex(choice));
         }
 
@@ -75,6 +75,33 @@ namespace eu.parada.game {
         private int nextDay() {
             user.addScore(1);
             return dayCounter.increaseDay();
+        }
+
+        /////////////////////////////////// !!! UTILITARIAN AND UI NOT IMPORTANT !!! //////////////////////////////////////////////
+        private List<StringMessage> messages = new List<StringMessage>() {
+            new StringMessage(StringConstant.FACT_1_TEXT, StringConstant.FACT_1_TITLE),
+            new StringMessage(StringConstant.FACT_2_TEXT, StringConstant.FACT_2_TITLE),
+            new StringMessage(StringConstant.FACT_3_TEXT, StringConstant.FACT_3_TITLE),
+            new StringMessage(StringConstant.FACT_4_TEXT, StringConstant.FACT_4_TITLE),
+            new StringMessage(StringConstant.FACT_5_TEXT, StringConstant.FACT_5_TITLE),
+            new StringMessage(StringConstant.FACT_6_TEXT, StringConstant.FACT_6_TITLE),
+            new StringMessage(StringConstant.FACT_7_TEXT, StringConstant.FACT_7_TITLE),
+            new StringMessage(StringConstant.FACT_8_TEXT, StringConstant.FACT_8_TITLE),
+            new StringMessage(StringConstant.FACT_9_TEXT, StringConstant.FACT_9_TITLE),
+            new StringMessage(StringConstant.FACT_10_TEXT, StringConstant.FACT_10_TITLE),
+            new StringMessage(StringConstant.FACT_11_TEXT, StringConstant.FACT_11_TITLE),
+            new StringMessage(StringConstant.FACT_12_TEXT, StringConstant.FACT_12_TITLE),
+            new StringMessage(StringConstant.FACT_13_TEXT, StringConstant.FACT_13_TITLE),
+            new StringMessage(StringConstant.FACT_14_TEXT, StringConstant.FACT_14_TITLE),
+            new StringMessage(StringConstant.FACT_15_TEXT, StringConstant.FACT_15_TITLE),
+            new StringMessage(StringConstant.FACT_16_TEXT, StringConstant.FACT_16_TITLE)
+        };
+
+        public StringMessage getFact(int factNumber) {
+            if (factNumber < 0 || factNumber >= messages.Count) return null;
+
+            return messages[factNumber];
+            
         }
     }
 }

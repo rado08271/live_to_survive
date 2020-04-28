@@ -64,6 +64,7 @@ namespace eu.parada.entities.organ {
             }
 
             vitals.money.earnMoney((int)(immunitiesSize - imunities.Count * Constants.REWARD_FOR_FIGHT));
+            StringUtils.getInstance().addMessage(new StringMessage("Your immunities killed " + (immunitiesSize - imunities.Count) + " viruses, but lost " + (tmpEnergy - vitals.energy.currentEnergy) + "energy in fight", true));
 
             return immunitiesSize - imunities.Count;
         }
@@ -75,6 +76,8 @@ namespace eu.parada.entities.organ {
 
             effect.isActive = true;
             boughtEffects.Add(effect);
+
+            StringUtils.getInstance().addMessage(effect.getRandomMessage());
 
             return true;
         }
@@ -97,7 +100,9 @@ namespace eu.parada.entities.organ {
             if (imunities.Count + imumnityToAdd.Count > cells.Count) return false;
             if (!vitals.money.butStuff(imumnityToAdd.Count * Constants.IMUNITY_PRICE)) return false;
 
-             ((List<Immunity>) imunities).AddRange(imumnityToAdd);
+            StringUtils.getInstance().addMessage(new StringMessage("Your bought " + (imumnityToAdd.Count) + " immunities and payed " + (imumnityToAdd.Count * Constants.IMUNITY_PRICE) + "DNA", true));
+
+            ((List<Immunity>) imunities).AddRange(imumnityToAdd);
             return true;
         }
 
@@ -160,7 +165,7 @@ namespace eu.parada.entities.organ {
 
         private bool increaseDay() {
             if (dayTime == DayTime.SLEEP) return false;
-            switch ((time++) % 4) {
+            switch ((++time) % 4) {
                 case (int) 0:
                     dayTime = DayTime.MORNING;
                     break;
@@ -184,7 +189,7 @@ namespace eu.parada.entities.organ {
             double value = 0;
             //TODO: Should health be added when effects are POSITIVE?
             foreach (var v in viruses) {
-                value += 2*Constants.MAX_LOST_HEALTH_PER_LOST_ENERGY - (Constants.MAX_LOST_HEALTH_PER_LOST_ENERGY + (((Constants.MAX_LOST_HEALTH_PER_LOST_ENERGY + v.getHarmnessLevel()) * vitals.health.currentHealth)/100));
+                value += 2*Constants.MAX_LOST_HEALTH_PER_LOST_ENERGY - (Constants.MAX_LOST_HEALTH_PER_LOST_ENERGY + (((Constants.MAX_LOST_HEALTH_PER_LOST_ENERGY + v.getHarmnessLevel()) * vitals.energy.currentEnergy)/100));
             }
 
             if (change) vitals.health.applyChanges(value);

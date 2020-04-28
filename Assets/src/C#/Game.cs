@@ -181,5 +181,11 @@ namespace eu.parada {
         public bool isLoaded() {
             return loaded;
         }
+
+        public StringMessage getRandomFact() {
+            int randomNumber = Randomizer.getRandomNumberMax(Constants.POSSIBILITY_OF_GETTING_MESSAGE);
+
+            return gamePlay.getFact(randomNumber);
+        }
     }
 }

@@ -16,7 +16,7 @@ namespace eu.parada.common {
         public StringMessage(string content, bool loggable) {
             this.wasShown = true;
             this.loggable = loggable;
-            this.content = content;
+            this.title = content;
         }
 
         public StringMessage(string content) {
