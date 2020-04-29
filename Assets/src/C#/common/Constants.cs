@@ -34,7 +34,7 @@ namespace eu.parada.common {
         public static double PRICE_FOR_WEARING_PROTECTION = 25;
         public static double PRICE_FOR_SOCIAL_DISTANCING = 35;
         public static double PRICE_FOR_HEALTHY_REGIMEN = 45;
-        public static double IMUNITY_PRICE = 0.8f;
+        public static double IMUNITY_PRICE = 1.5f;
 
         // HARMNESS VALUES
         public static double HARMNESS_FOR_CELL = 0;
@@ -51,6 +51,6 @@ namespace eu.parada.common {
         public static int LUNGS_CELL_CAPACITY = 300;
 
         // HOW OFTEN IS MESSAGE SHOWS
-        public static int POSSIBILITY_OF_GETTING_MESSAGE = 500;
+        public static int POSSIBILITY_OF_GETTING_MESSAGE = 60;
     }
 }

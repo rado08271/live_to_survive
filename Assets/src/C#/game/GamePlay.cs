@@ -13,6 +13,7 @@ namespace eu.parada.game {
         public Lungs lungs { get; private set; }
         private Events events;
         private DayCounter dayCounter;
+        private bool onboarding = false;
 
 
         public GamePlay(string userName, double difficulty) {
@@ -52,12 +53,14 @@ namespace eu.parada.game {
         }
 
         public virtual bool buySomeImmunity(int count) {
+            if (count == 0) return false;
             return events.buyImmunity(count);
         }
 
         public virtual bool attack() {
-            user.addScore(lungs.fight());
-            return (lungs.dayTime == DayTime.SLEEP) ? false : true;
+            int score = lungs.fight();
+            user.addScore(score);
+            return (lungs.dayTime == DayTime.SLEEP && score <= 0 ) ? false : true;
         }
 
         public virtual double changedHealth() {
@@ -102,6 +105,14 @@ namespace eu.parada.game {
 
             return messages[factNumber];
             
+        }
+
+        public void showInitialScreen() {
+            onboarding = true;
+        }
+
+        public bool seenInitialScreen() {
+            return onboarding;
         }
     }
 }

@@ -16,6 +16,7 @@ namespace eu.parada {
         private bool newScene = false;
         public GameObject loadingScreen;
         private bool loaded = false;
+        public AudioManger audioChannel;
 
         void Start() {
             StartCoroutine(initNewGame(2));
@@ -42,6 +43,18 @@ namespace eu.parada {
             }
         }
 
+        public AudioManger getAudioChannel() {
+            return audioChannel;
+        }
+
+        public bool seenInitialScreen() {
+            return gamePlay.seenInitialScreen();
+        }
+
+        public void showInitScreen() {
+            gamePlay.showInitialScreen();
+        }
+
         public LungsState getLungsState() {
             //Debug.Log("Get lungs state");
             return gamePlay.lungs.lungsState;
@@ -54,17 +67,42 @@ namespace eu.parada {
 
         public bool nextTurn() {
             //Debug.Log("Finishing day: " + getCurrentDay());
-            return gamePlay.newDay();
+            bool result = gamePlay.newDay();
+
+            if (getCurrentDay() + 1 >= getMaxDays()) {
+                audioChannel.playTimeTickingSound();
+            } else {
+                if (result) {
+                    audioChannel.playNewDaySound();
+                } else {
+                    //audioChannel.playNoSound();
+                }
+            }
+
+            return result;
         }
 
         public bool fight() {
             //Debug.Log("Fighting with fire");
-            return gamePlay.attack();
+            bool result = gamePlay.attack();
+
+            if (result && getEnergy() >= 1) {
+                audioChannel.playFightSound();
+            } else if (!result && getCurrentDayTime() == DayTime.SLEEP) {
+                audioChannel.playSleepingSound();
+            } else {
+                audioChannel.playTiredSound();
+            }
+
+            return result;
         }
 
         public bool buyEffects(int effectNumber) {
             //Debug.Log("Buying effect: " + effectNumber);
-            return gamePlay.buy(effectNumber);
+            bool result = gamePlay.buy(effectNumber);
+
+
+            return result;
         }
 
         //TOOD: Show effects when money available
@@ -83,7 +121,15 @@ namespace eu.parada {
 
         public bool buyImmunity(int count) {
             //Debug.Log("Buying immunity: " + count);
-            return gamePlay.buySomeImmunity(count);
+            bool result = gamePlay.buySomeImmunity(count);
+
+            if (result) {
+                audioChannel.playBoughtImmunitySound();
+            } else {
+                audioChannel.playNoSound();
+            }
+
+            return result;
         }
 
         //show some kind of picker with max of money
@@ -133,7 +179,7 @@ namespace eu.parada {
 
         public int getCurrentDay() {
             //Debug.Log("Getting current day: " + gamePlay.getCurrentDay());
-            return gamePlay.getCurrentDay() + 1;
+            return gamePlay.getCurrentDay();
         }
 
         public DayTime getCurrentDayTime() {

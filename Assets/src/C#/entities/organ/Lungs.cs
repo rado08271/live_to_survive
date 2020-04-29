@@ -119,6 +119,10 @@ namespace eu.parada.entities.organ {
                 lungsState = LungsState.CURED;
             } else if (viruses.Count >= cells.Count || vitals.health.currentHealth <= 0) {
                 lungsState = LungsState.DESTROYED;
+            } 
+
+            if (lungsState != LungsState.CURED && viruses.Count == 0) {
+                lungsState = LungsState.WORKING;
             }
         }
 
@@ -166,7 +170,7 @@ namespace eu.parada.entities.organ {
 
         private bool increaseDay() {
             if (dayTime == DayTime.SLEEP) return false;
-            switch ((++time) % 4) {
+            switch ((time++) % 4) {
                 case (int) 0:
                     dayTime = DayTime.MORNING;
                     break;

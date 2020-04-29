@@ -12,10 +12,6 @@ namespace eu.parada.manager {
         public Text sumOfImmuityToBuyText;
         public Button increaseImmunityButton;
 
-        public Generate cellGenerator;
-        public Generate immunityGenerator;
-        public Generate virusGenerator;
-
         public Text priceForDna;
 
         private int immunitiesToBuy = 0;
@@ -36,40 +32,40 @@ namespace eu.parada.manager {
         public void buyImmunity () {
             if (game.buyImmunity((int)(immunitiesToBuy * Constants.IMUNITY_PRICE)))
                 immunitiesToBuy = 0;
-
-            // TODO: WTF...Delete pls
-            //cellGenerator.newInit(game.getUserCells());
-            //virusGenerator.newInit(game.getUserViruses());
-            //immunityGenerator.newInit(game.getUserImmunity());
         }
 
         public void buyFirstEffect() {
+            game.getAudioChannel().playLearningSound();
+
             game.buyEffects(0);
         }
 
         public void buySecondEffect() {
+            game.getAudioChannel().playWashingHandsSound();
+
             game.buyEffects(1);
         }
 
         public void buyThirdEffect() {
+            game.getAudioChannel().playWearingFaceMaskSound();
+
             game.buyEffects(2);
         }
 
         public void buyFourthEffect() {
+            game.getAudioChannel().playSocialDistancing();
+
             game.buyEffects(3);
         }
 
         public void buyFifthEffect() {
+            game.getAudioChannel().playHealthyRegime();
+
             game.buyEffects(4);
         }
 
         public void attack() {
             game.fight();
-
-            // TODO: WTF...Delete pls
-            //cellGenerator.newInit(game.getUserCells());
-            //virusGenerator.newInit(game.getUserViruses());
-            //immunityGenerator.newInit(game.getUserImmunity());
         }
 
         public void skipTurn() {
@@ -77,10 +73,6 @@ namespace eu.parada.manager {
             StringMessage msg = game.getRandomFact();
             StringUtils.getInstance().addMessage(msg);
 
-            // TODO: WTF...Delete pls
-            //cellGenerator.newInit(game.getUserCells());
-            //virusGenerator.newInit(game.getUserViruses());
-            //immunityGenerator.newInit(game.getUserImmunity());
         }
 
         void Update() {

@@ -26,7 +26,7 @@ namespace eu.parada.manager {
             startingHealth.text = "STARTING HEALTH: " + (100 - (sliderDiff/ Constants.VITALS_DIFFICULTY_CONSTANT)).ToString();
             startingEnergy.text = "STARTING ENERGY: " + (100 - (sliderDiff/ Constants.VITALS_DIFFICULTY_CONSTANT)).ToString();
             startingVirus.text = "STARTING VIRUS: " + (Virus.getVirusCountBasedOnDifficulty(sliderDiff)).ToString();
-            daysToWinGame.text = "DAYS TO WINT GAME: " + (DayCounter.maxDaysInit(sliderDiff).ToString());
+            daysToWinGame.text = "DAYS TO WIN GAME: " + (DayCounter.maxDaysInit(sliderDiff).ToString());
             scoreBonus.text = "SCORE BONUS: " + (slider.value).ToString();
         }
     }

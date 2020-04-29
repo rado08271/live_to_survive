@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using eu.parada.manager;
+using eu.parada.common;
 
 namespace eu.parada {
     public class Menu : MonoBehaviour {

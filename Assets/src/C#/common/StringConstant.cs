@@ -8,41 +8,41 @@ namespace eu.parada.common {
         // GAME ICONS HELP
         public const string NO_USER = "User not defined";
 
-        public const string DECREASE_BUTTON_INFO = "This button is use to decrease value of imunity for buy";
-        public const string BUY_BUTTON_INFO = "This button is use to buy current value of imunity";
-        public const string INCREASE_bUTTON_INFO = "This button is use to increase value of imunity for buy";
-        public const string MAX_BUTTON_INFO = "This button set a maximum value of immunity, you can buy";
+        public const string DECREASE_BUTTON_INFO = "Decrease amount of immunity";
+        public const string BUY_BUTTON_INFO = "Activate selected amount of immunity to fight virus";
+        public const string INCREASE_bUTTON_INFO = "Increase amount of immunity";
+        public const string MAX_BUTTON_INFO = "Set all available immunity based on your DNA";
 
-        public const string LEARNING_BUTTON_INFO = "Buy new achievment LEARNING \nPrice: 5";
-        public const string WASHING_HANDS_BUTTON_INFO = "Buy new achievment WASHING HANDS. \nPriace: 15";
-        public const string WEARING_PROTECTION_BUTTON_INFO = "Buy new achievment WEARING PROTECTION. \nPrice: 25";
-        public const string SOCIAL_DISTENCING_BUTTON_INFO = "Buy new achievment SOCIAL DISTENCING. \nPrice: 35";
-        public const string HEALTHY_REGIME_BUTTON_INFO = "Buy new achievment HEALTHY REGIME. \nPrice: 45";
+        public const string LEARNING_BUTTON_INFO = "Gain new knowledge LEARNING \nPrice: 5 DNA";
+        public const string WASHING_HANDS_BUTTON_INFO = "Gain new knowledge WASHING HANDS. \nPriace: 15 DNA";
+        public const string WEARING_PROTECTION_BUTTON_INFO = "Gain new knowledge WEARING PROTECTION. \nPrice: 25 DNA";
+        public const string SOCIAL_DISTENCING_BUTTON_INFO = "Gain new knowledge SOCIAL DISTENCING. \nPrice: 35 DNA";
+        public const string HEALTHY_REGIME_BUTTON_INFO = "Gain new knowledge HEALTHY REGIME. \nPrice: 45 DNA";
 
-        public const string FIGHT_BUTTON_INFO = "This button is used to start fight with a current value of bought immunities \nAfter fight day will continue in next phase.";
-        public const string NEXT_DAY_INFO = "This button is use to skip current day";
+        public const string FIGHT_BUTTON_INFO = "Fight with a current immunities against virus. \nAfter fight is completed your organism needs to rest.";
+        public const string NEXT_DAY_INFO = "Take some sleep. Finish this day, next one may be better";
 
-        public const string HEALTH_ICON_INFO = "This icon show current value of your health";
-        public const string ENERGY_ICON_INFO = "This icon show current value of your energy \n You use energy to fight";
+        public const string HEALTH_ICON_INFO = "Current health status";
+        public const string ENERGY_ICON_INFO = "Current energy status \nYou use energy to fight virus. When your energy is low you will lose more health";
 
-        public const string CELLS_ICON_INFO = "This icon show you value of cells \n If count of viruses will bigger than count of cells you will die";
-        public const string VIRUS_ICON_INFO = "This icon show you count of viruses in your body";
-        public const string IMMS_ICON_INFO = "This icon show count of immunities \n immunieties are use to fight with vireses";
-        public const string DNA_ICON_INFO = "This icon show count of DNA \n DNA is use to buy ummunities ";
+        public const string CELLS_ICON_INFO = "Current value of alveols in your lungs";
+        public const string VIRUS_ICON_INFO = "How many viruses are currently in your body";
+        public const string IMMS_ICON_INFO = "How many immunities are ready to fight. \nYour immunity is ready, only, if you activate it for fight with your DNA.";
+        public const string DNA_ICON_INFO = "How much DNA you have currently available. \nDNA is some kind of currency";
 
-        public const string DAYS_ICON_INFO = "First number is a current day and seconf number is a maximum day you have to destroy virus";
-        public const string DAY_PHASE_ICON_INFO = "Icon sho you actual phase of day \n every day have 4 phase \n in every phase of day you can start fight once \n IF you are sleeping you can not fight";
+        public const string DAYS_ICON_INFO = "How long virus is present in your body and how many days you have to gain knowledge and cure your lungs.";
+        public const string DAY_PHASE_ICON_INFO = "Phase of current day, after each fight you need some rest. \nWhen you are in bed both battle fields are preparing for next day.";
 
         public const string NO_MESSAGE_FOUND = "No message found";
 
         // GAME STATES
-        public const string LOST_GAME_FAILED_DEAD = "Sorry virus beaten you...*Nearer My Go to Thee * plays in the background.Your corpse smells terrible.\n You should be more concise in the future! Look at the man next to you he is also dead. Good news is that there are not many like you";
+        public const string LOST_GAME_FAILED_DEAD = "Sorry virus won this time. Your corpse smells terrible. You should be more carefull in the future! Human next to you = also dead. Good news is that there are not many like you";
         public const string NO_TIME_BASIC = "Almost, but you ran out of time";
         public const string NO_TIME_GAME_WON = "And you won! Congratulation there are many like you!";
         public const string NO_TIME_LOST_INFECTED = "And you are still infected. But good fight, but you are still infected I don't think you will be able to survive next days";
         public const string NO_TIME_LOST_NOT_INFECTED = "And you didn't get infected?! You cheater! Okay I think it's honest to say that you find your own way to beating this game";
         public const string NO_TIME_LOST_DEAD = "*Nearer My Go to Thee* plays in the background. Your corpse smells terrible";
-        public const string WON_GAME_STATE = "Congratulation, you did it you beat the virus, try increasing level :P";
+        public const string WON_GAME_STATE = "Congratulation, you did it you have beaten the virus! If it was too easy, try increasing difficulty";
         public const string UNKNOWN_GAMESTATE_ERROR = "Uhm I don't know how, but you reached matrix";
 
         // BURKO's FACTS
@@ -119,5 +119,9 @@ namespace eu.parada.common {
         public const string HEALTHY_REGIME_TEXT_1 = "Being healthy in general is beneficial for you. It doesn't necesarilly means you should do as many excercise as you can. It would be prefferable tho, just enjoy any physical activity. Try to eliminate stress. Being healthy is not crucial only in times of outbreak. Stay healthy and safe!";
         public const string HEALTHY_REGIME_TEXT_2 = "Immunity is very important in fighing dissease. When you actually catch the dissease, who may save you, is your body. The thing that you nurture your whole life. In case of any dissease it will give you the picture of what mistakes you did. I hope you will not catch it but now you know that being healthy is super important";
         public const string HEALTHY_REGIME_TEXT_3 = "Experts say, that people should exercise, eat healthy, have alcohol-free days and quit smoking mainly during outbreaks. Such measures could make it less likely they'd be admitted to intensive care or worse.";
+
+        // FIRST DAY SCENARIO
+        public const string WELCOM_TITLE_MESSAGE = ", WELCOME!";
+        public const string WELCOME_TEXT_MESSAGE = "You are a young human living in developed country. As human species being not friendly to the environment, new deadly virus started to spread. The disease is spreading very fast, and has already hit the whole planet. There is almost no escape. More and more people are getting infected and death rate is increasing rapidly. The virus is mutating rapidly and scientists haven’t developed any vaccine yet. The bad news is - you're one of infected people. You only have few days to keep yourself from getting infected. You have to learn how to live when new pandemic outbreaks. Resist the virus and fight it. Gain new habits and feed your immunity to destroy virus in your body.\nGood luck!";
     }
 }
