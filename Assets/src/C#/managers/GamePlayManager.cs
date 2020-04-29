@@ -27,6 +27,8 @@ namespace eu.parada.manager {
         public Text fightImmunity;
         public Text fightEnergy;
 
+        private LungsState state = LungsState.DESTROYED;
+
         // Update is called once per frame
         void Update() {
             if (game.isLoaded()) {
@@ -41,31 +43,48 @@ namespace eu.parada.manager {
                 energy();
                 health();
                 dnaFightReward();
-                virusFight();
-                immunityFight();
-                energyFight();
             }
         }
 
         private void status() {
-            if (game.getLungsState() == LungsState.INFECTED) {
-                animationAlive.SetActive(false);
-                animationInfected.SetActive(true);
-                animationDead.SetActive(false);
-            } else if (game.getLungsState() == LungsState.DESTROYED) {
-                animationAlive.SetActive(false);
-                animationInfected.SetActive(false);
-                animationDead.SetActive(true);
-            } else {
-                animationAlive.SetActive(true);
-                animationInfected.SetActive(false);
-                animationDead.SetActive(false);
+            if (game.getLungsState() != state) {
+                Debug.Log("Changed state to");
+                if (game.getLungsState() == LungsState.INFECTED) {
+                    Debug.Log("INFECTED");
+                    animationAlive.SetActive(false);
+                    animationInfected.SetActive(true);
+                    animationDead.SetActive(false);
+                    state = LungsState.INFECTED;
+                    game.getAudioChannel().playFastHeartBeat();
+                } else if (game.getLungsState() == LungsState.DESTROYED || game.getHealth() <= 0) {
+                    Debug.Log("DESTROYED");
+                    animationAlive.SetActive(false);
+                    animationInfected.SetActive(false);
+                    animationDead.SetActive(true);
+                    state = LungsState.DESTROYED;
+                    game.getAudioChannel().playNNoHeartBeat();
+                } else if (game.getLungsState() == LungsState.WORKING) {
+                    Debug.Log("WORKING");
+                    animationAlive.SetActive(true);
+                    animationInfected.SetActive(false);
+                    animationDead.SetActive(false);
+                    state = LungsState.WORKING;
+                    game.getAudioChannel().playSlowHeartBeat();
+                } else if (game.getLungsState() == LungsState.CURED) {
+                    Debug.Log("CURED");
+                    animationAlive.SetActive(true);
+                    animationInfected.SetActive(false);
+                    animationDead.SetActive(false);
+                    state = LungsState.CURED;
+                    game.getAudioChannel().playSlowHeartBeat();
+                }
             }
         }
 
         private int viruses() {
             int min = game.getUserViruses();
             int max = min * (Constants.MAXIMUM_SPREADING_KIDS - game.effectBonus()) + (game.showEffects() - game.effectBonus());
+            if (max <= min) max = min;
             nextDayViruses.text = ("Virus: " + min + " - " + max + "");
             return max;
         }
@@ -91,8 +110,11 @@ namespace eu.parada.manager {
         }
 
         private void day() {
-            nextDayDay.text = ("Day: " + (game.getCurrentDay() + 1).ToString() + "");
-
+            if (game.getCurrentDay() + 2 > game.getMaxDays()) {
+                nextDayDay.text = ("Day: " + ("Hurry Up!").ToString() + "");
+            } else {
+                nextDayDay.text = ("Day: " + (game.getCurrentDay() + 2).ToString() + "");
+            }
         }
 
         private void energy() {
@@ -110,19 +132,33 @@ namespace eu.parada.manager {
         }
 
         private void dnaFightReward() {
-            fightDNA.text = "TODO";
+            int virusesCount = (game.getUserViruses() - game.getUserImmunity()) >= 0 ? (game.getUserViruses() - game.getUserImmunity()) : 0;
+            int imunitieCounts = (game.getUserImmunity() - game.getUserViruses()) >= 0 ? (game.getUserImmunity() - game.getUserViruses()) : 0;
+
+            double tmpEnergy = game.getEnergy();
+            // You do not have any energy
+            if ((game.getUserImmunity() - imunitieCounts) * Constants.ENERGY_FOR_ONE_CELL_FIGHT < 0) {
+                imunitieCounts = game.getUserImmunity() - (int)tmpEnergy;
+                virusesCount = game.getUserImmunity() - (int)tmpEnergy;
+            }
+
+            virusFight(virusesCount);
+            immunityFight(imunitieCounts);
+            energyFight((int) (tmpEnergy - (game.getUserImmunity() - imunitieCounts) * Constants.ENERGY_FOR_ONE_CELL_FIGHT));
+
+            fightDNA.text = (game.getUserImmunity() - imunitieCounts * Constants.REWARD_FOR_FIGHT).ToString();
         }
 
-        private void virusFight() {
-            fightVirus.text = "TODO";
+        private void virusFight(int value) {
+            fightVirus.text = value.ToString();
         }
 
-        private void immunityFight() {
-            fightImmunity.text = "TODO";
+        private void immunityFight(int value) {
+            fightImmunity.text = value.ToString();
         }
 
-        private void energyFight() {
-            fightEnergy.text = "TODO";
+        private void energyFight(int value) {
+            fightEnergy.text = value.ToString();
         }
     }
 }

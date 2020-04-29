@@ -32,9 +32,16 @@ namespace eu.parada.manager {
         public Button fourthEffect;
         public Button fifthEffect;
 
+        public AudioSource audioLoop;
+        public bool startMusic = true;
+
         // Update is called once per frame
         void Update() {
             if (game.isLoaded()) {
+                if (startMusic) {
+                    startMusic = false;
+                    audioLoop.Play();
+                }
                 healthValue.text = game.getHealth().ToString() + "%";
                 //healthSlider.value = game.getHealth()/100;
                 //healthSlider.value = 0.42f;// game.getHealth()/100;
@@ -49,7 +56,7 @@ namespace eu.parada.manager {
 
                 moneyValue.text = game.getDna().ToString();
 
-                dayCount.text = game.getCurrentDay().ToString() + "/" + game.getMaxDays().ToString();
+                dayCount.text = (game.getCurrentDay() + 1).ToString() + "/" + ((game.getMaxDays() <= game.getCurrentDay() + 1) ? game.getCurrentDay().ToString() : (game.getMaxDays() +1 ).ToString());
                 //dayCount.text = game.getDay().ToString();
 
                 userName.text = game.getUserName().ToString();
@@ -60,6 +67,8 @@ namespace eu.parada.manager {
                 checkEffect(2, thirdEffect);
                 checkEffect(3, fourthEffect);
                 checkEffect(4, fifthEffect);
+            } else {
+                startMusic = true;
             }
         }
 

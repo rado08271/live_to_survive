@@ -11,7 +11,8 @@ using eu.parada.common;
 namespace eu.parada {
     public class PostGame : MonoBehaviour {
 
-        public Image background;
+        public GameObject backgroundWon;
+        public GameObject backgroundLost;
         public GameObject loading;
 
         public Text gameResult;
@@ -40,25 +41,28 @@ namespace eu.parada {
 
             if (loaded) {
                 if ( game.gameState == GameState.FAILED) {
-                    gameResult.text = game.user.name + "! " + StringConstant.LOST_GAME_FAILED_DEAD;
-                    background.color = new Color(0.21f, 0.027f, 0);
+                    gameResult.text = game.user.name + "!\n " + StringConstant.LOST_GAME_FAILED_DEAD;
+                    backgroundWon.gameObject.SetActive(false);
+                    backgroundLost.gameObject.SetActive(true);
                 } else if (game.gameState == GameState.NOTIME) {
                     gameResult.text = game.user.name + "! " + StringConstant.NO_TIME_BASIC;
-                    background.color = new Color(0f, 0, 0);
+                    backgroundWon.gameObject.SetActive(false);
+                    backgroundLost.gameObject.SetActive(true);
                 } else if (game.gameState == GameState.WON) {
                     gameResult.text = game.user.name + "! " + StringConstant.WON_GAME_STATE;
-                    background.color = new Color(0f, 0.047f, 0.21f);
+                    backgroundWon.gameObject.SetActive(true);
+                    backgroundLost.gameObject.SetActive(false);
                 } else {
                     gameResult.text = StringConstant.UNKNOWN_GAMESTATE_ERROR;
-                    background.color = new Color(0f, 0f, 0f);
-
+                    backgroundWon.gameObject.SetActive(false);
+                    backgroundLost.gameObject.SetActive(false);
                 }
 
                 userName.text = "Player " + game.user.name;
                 userScore.text = "Your final score is " + game.user.score.ToString();
-                days.text = "It took you " + game.getCurrentDay().ToString() + " of " + game.getMaxDays() + " days";
+                days.text = "It took you " + game.getCurrentDay().ToString() + " out of " + game.getMaxDays() + " days";
                 money.text = "Final DNA " + ((int) game.lungs.vitals.money.currentMoney).ToString();
-                effectsAvailable.text = "You gained " + game.lungs.boughtEffects.Count.ToString() + " knowladge out of 5";
+                effectsAvailable.text = "You gained " + game.lungs.boughtEffects.Count.ToString() + " knowledge out of 5";
             }
         }
 

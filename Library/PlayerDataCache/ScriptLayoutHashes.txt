@@ -1,6 +1,6 @@
 WindowsStandalone
 PlayerPath?
-D:/hotovo/prjekty/unity/COVID_1.0.30_dev/COVID_1.0.30_dev.exe
+D:/hotovo/prjekty/unity/Live To Survive/Live To Survive.exe
 SceneListBegin?
 Assets/scenes/Menu.unity
 Assets/scenes/Difficulty.unity
@@ -127,8 +127,8 @@ c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.Spa
 45f3431f0103c41611e8d4eec3d439df UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.SpatialMappingRenderer
 b1d1a6249ea8019bb8466b47c585c686 Assembly-CSharp.dll:eu.parada.manager.DayManager
 1cbe86ed74c53ff118e231d8addab48f Assembly-CSharp.dll:eu.parada.Difficulty
-30b907f094eccd7644453b6d54870925 Assembly-CSharp.dll:eu.parada.manager.UsabilityManager
-59c8b3e9a609641e10fff39605a9d712 Assembly-CSharp.dll:eu.parada.manager.UIManager
+1356d60338b6c24282a51379c0bce81f Assembly-CSharp.dll:eu.parada.manager.UsabilityManager
+7f5bbbfc02ff352b5fbab2821a491355 Assembly-CSharp.dll:eu.parada.manager.UIManager
 bfe24485ed92425e50843b12c251b729 Assembly-CSharp.dll:eu.parada.manager.DifficultyUIManager
 fc1e0f4d8439d9928083474691511a13 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkAnimator
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Networking.dll:UnityEngine.Networking.NetworkBehaviour
@@ -161,8 +161,9 @@ bc68edb0af574bf79f9550ead8ebae5c UnityEngine.HoloLens.dll:UnityEngine.Audio.Audi
 c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.SpatialMappingCollider
 45f3431f0103c41611e8d4eec3d439df UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.SpatialMappingRenderer
 9de3a22eca9aefadba2d10d5987cefe3 UnityEngine.SpatialTracking.dll:UnityEngine.SpatialTracking.TrackedPoseDriver
-a69f8ec321a0dc744d0aef2596562cd5 Assembly-CSharp.dll:eu.parada.Game
+865fd9b399a034e5dc975eb7a26e9b92 Assembly-CSharp.dll:eu.parada.Game
 2defd2fe3b02cfbc6867087ea2d4da3a Assembly-CSharp.dll:eu.parada.TestValues
-bbc6e5286f9b8cc9eafb9896c75589db Assembly-CSharp.dll:eu.parada.PostGame
+4b7c6b692fc046fbbfa21cfa4b10aa2b Assembly-CSharp.dll:eu.parada.manager.StoryManager
+d6a72cabd9c60544ed367175ef142249 Assembly-CSharp.dll:eu.parada.PostGame
 3f0570f831a3001530858577039d7e75 Assembly-CSharp.dll:eu.parada.manager.PauseManager
-da0e66eb0c6c35d636ab13bf36027772 Assembly-CSharp.dll:eu.parada.manager.StoryManager
+ebe05fa790c3e7dde0b2df8008c94fc4 Assembly-CSharp.dll:eu.parada.manager.AudioManger
